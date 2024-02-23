@@ -4,15 +4,15 @@ It will group them in a single folder and you can easily search a project, open 
 
 # Todo
 - [ ] Initialize a project with differents options
-    - [ ] Choose a project template
+    - [x] Choose a project template
     - [ ] Create a Github repository and push it in Github
         - [ ] Integrate github Authentication with Token
-    - [ ] Initialize all files and push them to your Github Reposiory
+    - [ ] Initialize all files and push them to the user's Github Repository
     - [ ] If there's a model then allow to take the figma link of the project
-    - [ ] Save all configurations in json project file
-    - [ ] Allow the user to create his own template by using a json file description
-        - [ ] Can give a name to the template
-        - [ ] Specify where can he found the templates files
+    - [x] Save all configurations in json project file
+    - [x] Allow the user to create his own template by using a json file description
+        - [x] Can give a name to the template
+        - [x] Specify where can he found the templates files
             - On Github Repository
             - In the local file
     - [ ] Basics projects template

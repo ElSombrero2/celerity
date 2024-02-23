@@ -1,0 +1,10 @@
+{
+    "name": "nodejs",
+    "author": "ElSombrero2",
+    "path": {
+        "source": "GITHUB",
+        "uri": "https://github.com/ElSombrero2/ambiant-light-front",
+        "branch": "develop"
+    },
+    "description": "A simple Node Express Typescript Template"
+}
