@@ -1,11 +1,9 @@
-[package]
-name = "x-manager"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = [
+    "core",
+    "cli",
+]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-git2 = "0.18.2"
+[workspace.dependencies]
 serde = { version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.114"

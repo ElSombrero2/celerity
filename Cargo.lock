@@ -10,11 +10,29 @@ checksum = "ed570934406eb16438a4e976b1b4500774099c13b8cb96eec99f620f05090ddf"
 
 [[package]]
 name = "cc"
-version = "1.0.86"
+version = "1.0.87"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7f9fa1897e4325be0d68d48df6aa1a71ac2ed4d27723887e7754192705350730"
+checksum = "3286b845d0fccbdd15af433f61c5970e711987036cb468f437ff6badd70f4e24"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "cli"
+version = "0.1.0"
+dependencies = [
+ "core",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "core"
+version = "0.1.0"
+dependencies = [
+ "git2",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -257,12 +275,3 @@ name = "vcpkg"
 version = "0.2.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "accd4ea62f7bb7a82fe23066fb0957d48ef677f6eeb8215f372f52e48bb32426"
-
-[[package]]
-name = "x-manager"
-version = "0.1.0"
-dependencies = [
- "git2",
- "serde",
- "serde_json",
-]

@@ -1,0 +1,12 @@
+[package]
+name = "core"
+version = "0.1.0"
+authors = ["ElSombrero"]
+edition = "2021"
+
+[dependencies]
+git2 = "0.18.2"
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+
