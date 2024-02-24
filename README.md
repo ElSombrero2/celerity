@@ -1,4 +1,4 @@
-# X-Manager
+# Celerity.io
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
 It will group them in a single folder and you can easily search a project, open it or remove it by a simple command.  
 
