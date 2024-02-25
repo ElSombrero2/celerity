@@ -11,3 +11,4 @@ tokio = { workspace = true }
 core = { path = "../core" }
 clap = {version = "4.5.1", features = ["derive"]}
 ansi_term = "0.12"
+comfy-table = "7.1.0"
