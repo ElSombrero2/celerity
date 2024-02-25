@@ -1,8 +1,6 @@
-use std::fs;
-
 use serde::{Deserialize, Serialize};
-
 use crate::utils::json::read_json;
+use std::fs;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct TemplatePath {
