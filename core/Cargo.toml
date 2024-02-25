@@ -8,5 +8,3 @@ edition = "2021"
 git2 = "0.18.2"
 serde = { workspace = true }
 serde_json = { workspace = true }
-
-

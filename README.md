@@ -12,9 +12,8 @@ It will group them in a single folder and you can easily search a project, open 
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
         - [x] Can give a name to the template
-        - [x] Specify where can he found the templates files
-            - On Github Repository
-            - In the local file
+        - [x] Specify where can it fetches the template base project
+            - On Github Repository (Only github for the first version but all the rests will coming soon)
     - [ ] Basics projects template
         - [ ] Node.js (Javascript / Typescript)
         - [ ] Nest.js
@@ -30,7 +29,10 @@ It will group them in a single folder and you can easily search a project, open 
             - [ ] Angular
             - [ ] Vue.js
         - [ ] Next.js
-- [ ] Show the list of all current projects
+- [ ] Show the list of your project templates
+    - Show the name of the template
+    - Show the Author of the template
+- [ ] Show the list of all current project in your based project folder
     - [ ] Allow you to see the list of all project with:
         - Creation Date
         - Last commit and the current branch of the project
@@ -45,5 +47,10 @@ It will group them in a single folder and you can easily search a project, open 
     - [ ] Generate an empty Todolist for the project
     - [ ] Show the state and progression of the project based to the Todolist
 - [ ] Create a CLI tool
+    - [x] Command that show all your templates
+    - [ ] Command that show all the project and folder
+    - [ ] Command that allow you to add an existing folder to the project
+    - [ ] Command that create a new project from an existing template
+    - [ ] Command that open a specific project in vscode
 - [ ] Create a GUI
     - [ ] Create a GUI model
