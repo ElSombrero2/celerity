@@ -1,6 +1,7 @@
-use core::projects::template::list;
 use clap::Parser;
 use comfy_table::Table;
+use commands::{projects::init_project, templates::show_template_list};
+use texts::lib_description;
 
 mod commands;
 mod texts;
@@ -11,22 +12,8 @@ async fn main(){
     let mut table = Table::new();
 
     match cmd {
-        commands::Commands {template_list: true, ..} => {
-            let templates = list(String::from("examples/templates"));
-            let template_length = templates.len();
-            table.set_header(vec!["Name", "Author"]);
-            for template in templates {
-                if let Some(template) = template {
-                    table.add_row(vec![
-                        template.name,
-                        template.author
-                    ]);
-                }
-            }
-            println!("Templates list ({})\n{}", template_length, table)
-        },
-        _ => {
-            println!("{}", texts::lib_description());
-        }
+        commands::Commands {templates: true, ..} => show_template_list(&mut table),
+        commands::Commands {init: Some(init), ..} => init_project(init),
+        _ => lib_description()
     }
 }

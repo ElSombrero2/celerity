@@ -2,6 +2,23 @@
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
 It will group them in a single folder and you can easily search a project, open it or remove it by a simple command.  
 
+# How to use
+For help command use
+```bash
+# Help command
+celerity --help
+# Show the current version
+celerity --version
+```
+To show all available templates use
+```bash
+celerity --templates
+```
+For initialize a new project use
+```bash
+celerity init --template <YOUR_TEMPLATE> <YOUR_PROJECT_NAME> <YOUR_PROJECT_PATH>
+```
+
 # Todo
 - [ ] Initialize a project with differents options
     - [x] Choose a project template
@@ -50,7 +67,7 @@ It will group them in a single folder and you can easily search a project, open 
     - [x] Command that show all your templates
     - [ ] Command that show all the project and folder
     - [ ] Command that allow you to add an existing folder to the project
-    - [ ] Command that create a new project from an existing template
+    - [x] Command that create a new project from an existing template
     - [ ] Command that open a specific project in vscode
 - [ ] Create a GUI
     - [ ] Create a GUI model
