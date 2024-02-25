@@ -2,22 +2,32 @@
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
 It will group them in a single folder and you can easily search a project, open it or remove it by a simple command.  
 
-# How to use
+# How to run
+Considere that this is tool is `only available in dev mode` now  
+It will allow you to init a new project from the existing templates,  
+and will show all the existing template in the example templates folder
+## Commands 
 For help command use
 ```bash
 # Help command
-celerity --help
+cargo run -- --help
 # Show the current version
-celerity --version
+cargo run -- --version
 ```
 To show all available templates use
 ```bash
-celerity --templates
+cargo run -- --templates
 ```
 For initialize a new project use
 ```bash
-celerity init --template <YOUR_TEMPLATE> <YOUR_PROJECT_NAME> <YOUR_PROJECT_PATH>
+cargo run -- init --template \
+<YOUR_TEMPLATE> \
+<YOUR_PROJECT_NAME> \
+<YOUR_PROJECT_PATH>
 ```
+## Notes
+You can add more templates by adding files templates to
+`examples/templates` in the repository directory if you want to have more template for testing the tools
 
 # Todo
 - [ ] Initialize a project with differents options
