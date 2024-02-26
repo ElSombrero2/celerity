@@ -1,4 +1,4 @@
-use ansi_term::Colour::{Blue, Green};
+use ansi_term::Colour::{Blue, Green, Red};
 use figlet_rs::FIGfont;
 use indoc::indoc;
 
@@ -17,4 +17,8 @@ pub fn lib_description() {
         }, 
     Blue.bold().paint("Celerity.io"), Green.bold().underline().paint("easily"));
     println!("{}", text)
+}
+
+pub fn config_error(){
+    println!("An {}, it seems like Configuration file is not found!", Red.bold().paint("error occured"));
 }

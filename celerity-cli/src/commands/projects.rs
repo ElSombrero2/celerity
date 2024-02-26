@@ -1,4 +1,4 @@
-use core::{ git::{clone_project, reinit}, projects::template::Template, utils::json::read_json};
+use core::{git::{clone_project, reinit}, projects::types::Template, utils::json::read_json};
 use super::types::project::Project;
 use ansi_term::Colour::{Red, Green};
 
