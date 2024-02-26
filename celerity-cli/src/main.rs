@@ -1,5 +1,4 @@
-use core::{config::types::Configuration, utils::json::read_json};
-
+use core::{config::types::Configuration, git::github::server::start_server, utils::json::read_json};
 use clap::Parser;
 use comfy_table::Table;
 use commands::{projects::init_project, templates::show_template_list};
@@ -10,14 +9,19 @@ mod texts;
 
 #[tokio::main]
 async fn main(){
+    dotenvy::dotenv().expect("Error while loading env");
     let cmd = commands::Commands::parse();
     let mut table = Table::new();
-    let config = read_json::<Configuration>(String::from("examples/config/basic-config.json"));
-    if let Some(_config) = config {
+    let config = read_json::<Configuration>(".config/configuration.json".to_owned());
+    if cmd.github_login { start_server().await; }
+    if config.is_some() {
         match cmd {
             commands::Commands {templates: true, ..} => show_template_list(&mut table),
             commands::Commands {init: Some(init), ..} => init_project(init),
             _ => lib_description()
         }
-    }else { config_error(); }
+    }else {
+        lib_description(); 
+        config_error(); 
+    }
 }
