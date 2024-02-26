@@ -1,6 +1,7 @@
 use std::{fs, path::Path};
-
 use git2::{Index, Repository};
+
+pub mod github;
 
 pub fn clone_project(remote_uri: String, branch: Option<String>, path: String) -> Option<String> {
     if let Some(branch) = branch {
@@ -15,10 +16,10 @@ pub fn clone_project(remote_uri: String, branch: Option<String>, path: String) -
 
 pub fn reinit(to_remove: String, to_init: String) -> bool{
     let removing = fs::remove_dir_all(to_remove);
-    if let Ok(_) = &removing {
+    if removing.is_ok() {
         if let Ok(repository) = Repository::init(to_init) {
             if let Ok(mut index) = repository.index() {
-                index.add_all(&["."], git2::IndexAddOption::DEFAULT, None).unwrap();
+                index.add_all(["."], git2::IndexAddOption::DEFAULT, None).unwrap();
                 index.write().unwrap();
                 if commit(&repository, index, "Initial Commit") {
                     return true;

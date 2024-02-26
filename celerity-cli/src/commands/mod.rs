@@ -11,5 +11,7 @@ pub struct Commands {
     #[arg(short, long, help = "See all templates available")]
     pub templates: bool,
     #[command(subcommand, help = "Initialize your project" )]
-    pub init: Option<Project>
+    pub init: Option<Project>,
+    #[arg(short = 'g', long = "github-login", help = "Login with Github")]
+    pub github_login: bool,
 }

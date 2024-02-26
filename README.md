@@ -1,11 +1,25 @@
 # Celerity.io
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
-It will group them in a single folder and you can easily search a project, open it or remove it by a simple command.  
-
 # How to run
 Considere that this is tool is `only available in dev mode` now  
 It will allow you to init a new project from the existing templates,  
-and will show all the existing template in the example templates folder
+and will show all the existing template in the example templates folder  
+
+`Celerity.io` will search your config to .config/configuration.json  
+If the file does not exist then run the Github Login command.  
+Running this command will initialize all the use configuration.  
+For more information refer to the help section or write an issue on this repository.
+## Environments
+```dosini
+CLIENT_SECRET<YOUR GITHUB APP CLIENT SECRET>
+CLIENT_ID=<YOUR GITHUB APP CLIENT ID>
+REDIRECT_URI=<YOUR GITHUB APP REDIRECT URI>
+GITHUB_BASE_URL=https://github.com
+SCOPE=<YOUR SCOPE>
+STATE=celerity.io
+EXTRA="allow_signup=true"
+GITHUB_API_BASE_URL=https://api.github.com
+```
 ## Commands 
 For help command use
 ```bash
@@ -18,6 +32,13 @@ To show all available templates use
 ```bash
 cargo run -- --templates
 ```
+To login with github
+```bash
+cargo run -- --github-login
+# Or
+cargo run -- -g
+
+```
 For initialize a new project use
 ```bash
 cargo run -- init --template \
@@ -27,17 +48,18 @@ cargo run -- init --template \
 ```
 ## Notes
 You can add more templates by adding files templates to
-`examples/templates` in the repository directory if you want to have more template for testing the tools
+`examples/templates` in the repository directory if you want to have more template for testing the tools  
+this is only the development public repository but a beta version will coming soon.  
 
 # Todo
 - [ ] Initialize a project with differents options
     - [x] Choose a project template
     - [ ] Create a Github repository and push it in Github
-        - [ ] Integrate github Authentication with Token
-    - [ ] Initialize all files and push them to the user's Github Repository
-    - [ ] If there's a model then allow to take the figma link of the project
+        - [x] Integrate github Authentication with Token
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
+    - [ ] Initialize all files and push them to the user's Github Repository
+    - [ ] If there's a model then allow to take the figma link of the project
         - [x] Can give a name to the template
         - [x] Specify where can it fetches the template base project
             - On Github Repository (Only github for the first version but all the rests will coming soon)
@@ -74,10 +96,11 @@ You can add more templates by adding files templates to
     - [ ] Generate an empty Todolist for the project
     - [ ] Show the state and progression of the project based to the Todolist
 - [ ] Create a CLI tool
+    - [x] Command that allow you to connect to your github account
     - [x] Command that show all your templates
+    - [x] Command that create a new project from an existing template
     - [ ] Command that show all the project and folder
     - [ ] Command that allow you to add an existing folder to the project
-    - [x] Command that create a new project from an existing template
     - [ ] Command that open a specific project in vscode
 - [ ] Create a GUI
     - [ ] Create a GUI model

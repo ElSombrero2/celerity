@@ -1,4 +1,4 @@
-use ansi_term::Colour::{Blue, Green, Red};
+use ansi_term::Colour::{Blue, Green, Yellow};
 use figlet_rs::FIGfont;
 use indoc::indoc;
 
@@ -20,5 +20,14 @@ pub fn lib_description() {
 }
 
 pub fn config_error(){
-    println!("An {}, it seems like Configuration file is not found!", Red.bold().paint("error occured"));
+    println!(indoc! {"
+        \n{} It seems like Configuration file is not found!
+        Please try to login with github using 
+        the command {} or short command {} 
+        to initialize your configuration file
+    "}, 
+        Yellow.bold().paint("[WARN]"),
+        Blue.bold().paint("--github-login"),
+        Blue.bold().paint("-g")
+    );
 }
