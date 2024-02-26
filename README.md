@@ -56,6 +56,7 @@ this is only the development public repository but a beta version will coming so
     - [x] Choose a project template
     - [ ] Create a Github repository and push it in Github
         - [x] Integrate github Authentication with Token
+        - [ ] Refresh the token when it's expired
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
     - [ ] Initialize all files and push them to the user's Github Repository
