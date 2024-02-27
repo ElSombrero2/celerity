@@ -1,5 +1,7 @@
-# Celerity.io
+# ✨ Celerity.io
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
+## Why should I use Celerity.io? 🤔
+Because it's "Vita Malagasy". 🫡
 # How to run
 Considere that this is tool is `only available in dev mode` now  
 It will allow you to init a new project from the existing templates,  
