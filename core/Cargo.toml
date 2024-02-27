@@ -10,6 +10,7 @@ tokio = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 ansi_term = { workspace = true }
+spinoff = { workspace = true }
 actix-web = "4"
 open = "5.0.1"
 reqwest = {version = "*", features = ["json", "blocking"]}
