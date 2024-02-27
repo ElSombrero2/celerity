@@ -13,9 +13,9 @@ async fn login(payload: web::Query<OAuth2Payload>) -> impl Responder {
                 client_secret: env::var("CLIENT_SECRET").unwrap_or_default(),
                 redirect_uri: env::var("REDIRECT_URI").unwrap_or_default()
             }) {
-                println!("Your {} authenticate!", ansi_term::Colour::Green.bold().paint("successfully"));
+                println!("\nYour {} authenticate!", ansi_term::Colour::Green.bold().paint("successfully"));
             }else {
-                println!("An {}, please try again or check your {}!", 
+                println!("\nAn {}, please try again or check your {}!", 
                     ansi_term::Colour::Red.bold().paint("error occured"),
                     ansi_term::Colour::Green.bold().paint("internet connection")
                 );
