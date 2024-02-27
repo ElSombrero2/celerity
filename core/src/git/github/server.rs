@@ -15,7 +15,10 @@ async fn login(payload: web::Query<OAuth2Payload>) -> impl Responder {
             }) {
                 println!("Your {} authenticate!", ansi_term::Colour::Green.bold().paint("successfully"));
             }else {
-                println!("An {}, please try again!", ansi_term::Colour::Red.bold().paint("error occured"));
+                println!("An {}, please try again or check your {}!", 
+                    ansi_term::Colour::Red.bold().paint("error occured"),
+                    ansi_term::Colour::Green.bold().paint("internet connection")
+                );
             }
         }
     }
@@ -28,6 +31,6 @@ pub async fn start_server(){
         App::new()
             .service(login)
     });
-    let run = server.bind("127.0.0.1:8100").unwrap().run();
+    let run = server.shutdown_timeout(1).bind("127.0.0.1:8100").unwrap().run();
     let _ = tokio::join!(run, open_browser(get_authorization_uri()));
 }

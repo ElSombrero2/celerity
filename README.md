@@ -9,6 +9,23 @@ and will show all the existing template in the example templates folder
 If the file does not exist then run the Github Login command.  
 Running this command will initialize all the use configuration.  
 For more information refer to the help section or write an issue on this repository.
+# Help
+
+```bash
+Celerity is a simple tool to init your project based on templates
+
+Usage: celerity.exe [OPTIONS] [COMMAND]
+
+Commands:
+  init
+  help  Print this message or the help of the given subcommand(s)
+
+Options:
+  -t, --templates     See all templates available
+  -g, --github-login  Login with Github
+  -h, --help          Print help
+  -V, --version       Print version
+```
 ## Environments
 ```dosini
 CLIENT_SECRET<YOUR GITHUB APP CLIENT SECRET>
@@ -54,9 +71,9 @@ this is only the development public repository but a beta version will coming so
 # Todo
 - [ ] Initialize a project with differents options
     - [x] Choose a project template
-    - [ ] Create a Github repository and push it in Github
+    - [x] Create a Github repository and push it in Github
         - [x] Integrate github Authentication with Token
-        - [ ] Refresh the token when it's expired
+        - [x] Refresh the token when it's expired
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
     - [ ] Initialize all files and push them to the user's Github Repository
@@ -79,7 +96,7 @@ this is only the development public repository but a beta version will coming so
             - [ ] Angular
             - [ ] Vue.js
         - [ ] Next.js
-- [ ] Show the list of your project templates
+- [x] Show the list of your project templates
     - Show the name of the template
     - Show the Author of the template
 - [ ] Show the list of all current project in your based project folder

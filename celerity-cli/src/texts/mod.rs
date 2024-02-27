@@ -31,3 +31,13 @@ pub fn config_error(){
         Blue.bold().paint("-g")
     );
 }
+
+pub fn expiration_message(){
+    print!(indoc! {
+        "Your {} has expired,
+        {} your session...
+    "},
+        Yellow.bold().paint("session"),
+        Green.bold().paint("Refeshing"),
+    );
+}
