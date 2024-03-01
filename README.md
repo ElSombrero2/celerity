@@ -11,12 +11,12 @@ and will show all the existing template in the example templates folder
 If the file does not exist then run the Github Login command.  
 Running this command will initialize all the use configuration.  
 For more information refer to the help section or write an issue on this repository.
-# Help
+## Help
 
 ```bash
 Celerity is a simple tool to init your project based on templates
 
-Usage: celerity.exe [OPTIONS] [COMMAND]
+Usage: celerity [OPTIONS] [COMMAND]
 
 Commands:
   init
@@ -39,31 +39,36 @@ STATE=celerity.io
 EXTRA="allow_signup=true"
 GITHUB_API_BASE_URL=https://api.github.com
 ```
-## Commands 
+## CLI
 For help command use
 ```bash
 # Help command
-cargo run -- --help
+cargo run --bin celerity -- --help
 # Show the current version
-cargo run -- --version
+cargo run --bin celerity -- --version
 ```
 To show all available templates use
 ```bash
-cargo run -- --templates
+cargo run --bin celerity -- --templates
 ```
 To login with github
 ```bash
-cargo run -- --github-login
+cargo run --bin celerity -- --github-login
 # Or
-cargo run -- -g
+cargo run --bin celerity -- -g
 
 ```
 For initialize a new project use
 ```bash
-cargo run -- init --template \
+cargo run --bin celerity -- init --template \
 <YOUR_TEMPLATE> \
 <YOUR_PROJECT_NAME> \
 <YOUR_PROJECT_PATH>
+```
+## Desktop App
+Make sure that you've install the tauri command before running the project in dev mode
+```bash
+cargo tauri dev
 ```
 ## Notes
 You can add more templates by adding files templates to

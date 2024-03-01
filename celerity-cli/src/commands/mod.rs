@@ -2,8 +2,7 @@ use clap::Parser;
 use self::types::project::Project;
 
 pub mod types;
-pub mod templates;
-pub mod projects;
+pub mod actions;
 
 #[derive(Parser, Debug)]
 #[command(version = "0.1.0", about = "Celerity is a simple tool to init your project based on templates", long_about = None)]
@@ -14,4 +13,8 @@ pub struct Commands {
     pub init: Option<Project>,
     #[arg(short = 'g', long = "github-login", help = "Login with Github")]
     pub github_login: bool,
+    #[arg(short, long, help = "Show all projects")]
+    pub projects: bool,
+    #[arg(long, help = "Find one project")]
+    pub project: Option<String>,
 }

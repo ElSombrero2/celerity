@@ -2,6 +2,7 @@
 members = [
     "core",
     "celerity-cli",
+    "celerity-desktop/src-tauri"
 ]
 resolver = "2"
 

@@ -1,16 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct TemplatePath {
-    pub source: String,
-    pub uri: String,
-    pub branch: Option<String>
-}
+pub mod template;
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Template {
+pub struct Projects {
+    pub path: String,
     pub name: String,
-    pub author: String,
-    pub path: TemplatePath,
-    pub description: String
 }
