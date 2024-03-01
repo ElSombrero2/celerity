@@ -1,13 +1,27 @@
 use std::env;
+use actix_web::{get, web, HttpResponse, Responder};
+use serde::Deserialize;
+use crate::{auth::server::Server, git::github::types::{Github, GithubClient}};
 
-use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
-use crate::{git::github::{authenticate, kill, open_browser, types::{GithubClient, OAuth2Payload}}, utils::url::get_authorization_uri};
+#[derive(Deserialize, Debug)]
+pub struct OAuth2Payload {
+    pub code: Option<String>,
+    pub state: Option<String>,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct OAuth2Response {
+    pub access_token: String,
+    pub scope: String,
+    pub token_type: String,
+}
+
 
 #[get("/login")]
 async fn login(payload: web::Query<OAuth2Payload>) -> impl Responder {
     if let (Some(code), Some(state)) = (&payload.code, &payload.state) {
         if state.eq("celerity.io") {
-            if authenticate(GithubClient {
+            if Github::authenticate(GithubClient {
                 code: code.to_string(),
                 client_id: env::var("CLIENT_ID").unwrap_or_default(),
                 client_secret: env::var("CLIENT_SECRET").unwrap_or_default(),
@@ -22,15 +36,8 @@ async fn login(payload: web::Query<OAuth2Payload>) -> impl Responder {
             }
         }
     }
-    kill(1000);
+    Server::kill(1000);
     HttpResponse::Ok().body("Process ended, you can close this browser!")
 }
 
-pub async fn start_server(){
-    let server = HttpServer::new(|| {
-        App::new()
-            .service(login)
-    });
-    let run = server.shutdown_timeout(1).bind("127.0.0.1:8100").unwrap().run();
-    let _ = tokio::join!(run, open_browser(get_authorization_uri()));
-}
+pub mod server;
