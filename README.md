@@ -23,10 +23,13 @@ Commands:
   help  Print this message or the help of the given subcommand(s)
 
 Options:
-  -t, --templates     See all templates available
-  -g, --github-login  Login with Github
-  -h, --help          Print help
-  -V, --version       Print version
+-t, --templates          See all templates available
+  -g, --github-login       Login with Github
+  -p, --projects           Show all projects
+      --project <PROJECT>  Find one project
+      --me                 Show all my Github account information
+  -h, --help               Print help
+  -V, --version            Print version
 ```
 ## Environments
 ```dosini
@@ -117,6 +120,7 @@ this is only the development public repository but a beta version will coming so
             - If VS Code is not found then open the default browser to VS Code website
         - Button: Browse File
         - Short image or Logo of the project (if None then show the default image)
+- [x] Show autheticated user information from github
 - [ ] Have a todolist for all projects
     - [ ] Generate an empty Todolist for the project
     - [ ] Show the state and progression of the project based to the Todolist
@@ -124,6 +128,7 @@ this is only the development public repository but a beta version will coming so
     - [x] Command that allow you to connect to your github account
     - [x] Command that show all your templates
     - [x] Command that create a new project from an existing template
+    - [x] Command that show the user information from github
     - [ ] Command that show all the project and folder
     - [ ] Command that allow you to add an existing folder to the project
     - [ ] Command that open a specific project in vscode
