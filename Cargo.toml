@@ -14,3 +14,5 @@ dotenvy = "0.15.7"
 ansi_term = "0.12"
 spinoff = "0.8.0"
 reqwest = {version = "*", features = ["json", "blocking"] }
+chrono = "0.4.34"
+uuid = "1.7.0"

@@ -1,4 +1,4 @@
-use std::{fs::File, io::Read};
+use std::{fs::{self, File}, io::Read, path::Path};
 use serde::de::DeserializeOwned;
 
 pub struct Json;
@@ -16,5 +16,13 @@ impl Json {
             return Option::None;
         }
         Option::None
+    }
+
+    pub fn save(content: String, path: String, filename: String) -> bool {
+        if !Path::new(&path).exists() {
+            fs::create_dir(&path).unwrap_or_default();   
+        }
+        println!("{path}/{filename}");
+        fs::write(format!("{path}/{filename}"), content).is_ok()
     }   
 }
