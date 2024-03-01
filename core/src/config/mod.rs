@@ -1,4 +1,3 @@
-use std::fs;
 use crate::{auth::OAuth2Response, git::github::types::Github, utils::json::Json};
 use self::types::Configuration;
 
@@ -26,8 +25,7 @@ impl Configuration {
     
     pub fn save(configuration: &Configuration) -> bool {
         let content = serde_json::to_string_pretty(&configuration).unwrap_or_default();
-        fs::create_dir(".config").unwrap_or_default();
-        fs::write(".config/configuration.json", content).is_ok()
+        Json::save(content, ".config".to_owned(), "configuration.json".to_owned())
     }
     
 }

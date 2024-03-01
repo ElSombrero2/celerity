@@ -19,9 +19,7 @@ impl Git {
     
     pub fn reinit(to_remove: String, to_init: String) -> bool{
         let removing = fs::remove_dir_all(to_remove);
-        let create_celerity_folder = fs::create_dir(to_init.to_owned() + "/.celerity");
-        
-        if removing.is_ok() && create_celerity_folder.is_ok() {
+        if removing.is_ok() {
             if let Ok(repository) = Repository::init(to_init) {
                 if let Ok(mut index) = repository.index() {
                     index.add_all(["."], git2::IndexAddOption::DEFAULT, None).unwrap();
