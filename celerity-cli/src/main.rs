@@ -1,5 +1,5 @@
 use core::{auth::server::Server, config::types::Configuration, git::github::types::Github, utils::json::Json};
-use commands::actions::{project::ProjectAction, template::TemplateAction};
+use commands::actions::{project::ProjectAction, template::TemplateAction, user::UserAction};
 use messages::Messages;
 use clap::Parser;
 use comfy_table::Table;
@@ -24,6 +24,7 @@ async fn main(){
             commands::Commands { init: Some(init), ..} => ProjectAction::init(init, &mut config),
             commands::Commands { projects: true, .. } => println!("Projects"),
             commands::Commands { project: Some(project), ..  } => println!("Project {}", project),
+            commands::Commands { me: true, .. } => UserAction::show(&config).await,
             _ => Messages::lib_description()
         }
     }else {

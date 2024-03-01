@@ -17,4 +17,6 @@ pub struct Commands {
     pub projects: bool,
     #[arg(long, help = "Find one project")]
     pub project: Option<String>,
+    #[arg(long, help = "Show all my Github account information")]
+    pub me: bool,
 }
