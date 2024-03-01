@@ -1,12 +1,11 @@
 use serde::{Deserialize, Serialize};
-
-use crate::projects::types::Projects;
+use crate::projects::types::ConfigurationProject;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Configuration{
     pub github_token: Option<String>,
     pub user: Option<User>,
-    pub projects: Vec<Projects>,
+    pub projects: Vec<ConfigurationProject>,
 }
 
 #[derive(Deserialize, Serialize, Debug)]
@@ -28,4 +27,4 @@ pub struct User {
     pub private_gists: Option<u32>,
     pub total_private_repos: Option<u32>,
     pub owned_private_repos: Option<u32>,
-  }
+}

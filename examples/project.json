@@ -3,7 +3,6 @@
     "created_at": "Date",
     "docker": "boolean",
     "based_template": "String",
-    "authors": [],
     "board": {
         "String": [
             {

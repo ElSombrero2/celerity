@@ -1,4 +1,4 @@
-use core::{config::types::Configuration, git::Git, projects::types::{template::Template, Projects}, utils::{json::Json, printer::SpinnerPrinter}};
+use core::{config::types::Configuration, git::Git, projects::types::{template::Template, ConfigurationProject}, utils::{json::Json, printer::SpinnerPrinter}};
 use ansi_term::Colour::{Red, Green, Blue, White};
 use crate::commands::types::project::Project;
 
@@ -8,9 +8,9 @@ impl ProjectAction {
     fn add_projects_and_save(dir: String, name: String, config: &mut Configuration) -> (String, String) {
         let to_remove = dir.to_owned();
         let to_init = dir.replace(".git/", "");
-        config.projects.push(Projects { name, path: to_init.to_owned() });
-        Configuration::save(&config);
-        return (to_remove, to_init);
+        config.projects.push(ConfigurationProject { name, path: to_init.to_owned() });
+        Configuration::save(config);
+        (to_remove, to_init)
     }
 
     pub fn init(init: Project, config: &mut Configuration){
