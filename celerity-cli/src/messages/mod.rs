@@ -1,4 +1,4 @@
-use ansi_term::Colour::{Blue, Green, Yellow};
+use ansi_term::Colour::{Blue, Green, Yellow, Red};
 use figlet_rs::FIGfont;
 use indoc::indoc;
 
@@ -26,12 +26,10 @@ impl Messages {
         println!(indoc! {"
             \n{} It seems like Configuration file is not found!
             Please try to login with github using 
-            the command {} or short command {} 
-            to initialize your configuration file
+            the command {} to initialize your configuration file
         "}, 
             Yellow.bold().paint("[WARN]"),
-            Blue.bold().paint("--github-login"),
-            Blue.bold().paint("-g")
+            Blue.bold().paint("--login"),
         );
     }
     
@@ -43,5 +41,19 @@ impl Messages {
             Yellow.bold().paint("session"),
             Green.bold().paint("Refeshing"),
         );
-    }   
+    }
+
+    pub fn success_message(action: String){
+        println!("{} {}",
+            Green.bold().paint("Success: "),
+            action,
+        );
+    }
+
+    pub fn error_message(action: String) {
+        println!("{} occured in {}", 
+            Red.bold().paint("An error"),
+            Blue.bold().paint(action)
+        )
+    }
 }

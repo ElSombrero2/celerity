@@ -3,43 +3,45 @@ use clap::Subcommand;
 #[derive(Subcommand, Debug, Clone)]
 pub enum ProjectCommand{
     Init {
+        #[arg(short, long)]
         name: String,
+        #[arg(short, long)]
         path: String,
         #[arg(short, long)]
         template: String,
     },
     AddTodo {
-        #[arg(long)]
-        id: String,
-        #[arg(long)]
+        #[arg(short, long)]
+        project: String,
+        #[arg(short, long)]
         row: String,
-        #[arg(long)]
+        #[arg(short, long)]
         title: String,
     },
     AddRow {
-        #[arg(long)]
-        id: String,
-        #[arg(long)]
+        #[arg(short, long)]
+        project: String,
+        #[arg(short, long)]
         row: String,
     },
     RemoveRow {
-        #[arg(long)]
-        id: String,
-        #[arg(long)]
+        #[arg(short, long)]
+        project: String,
+        #[arg(short, long)]
         row: String,
     },
     RemoveTask {
-        #[arg(long)]
-        project_id: String,
-        #[arg(long)]
+        #[arg(short, long)]
+        project: String,
+        #[arg(short, long)]
         row: String,
-        #[arg(long)]
+        #[arg(short, long)]
         task_id: String,
     },
     MoveTask {
-        #[arg(long)]
-        project_id: String,
-        #[arg(long)]
+        #[arg(short, long)]
+        project: String,
+        #[arg(short, long)]
         task_id: String,
         #[arg(long)]
         origin_row: String,
@@ -47,6 +49,6 @@ pub enum ProjectCommand{
         target_row: String,
     },
     Open {
-        id: String,
+        project: String,
     }
 }

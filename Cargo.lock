@@ -542,7 +542,6 @@ dependencies = [
  "dotenvy",
  "figlet-rs",
  "indoc",
- "reqwest",
  "serde",
  "serde_json",
  "spinoff",
@@ -786,6 +785,7 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "ansi_term",
+ "chrono",
  "git2",
  "open 5.0.1",
  "reqwest",
@@ -794,6 +794,7 @@ dependencies = [
  "spinoff",
  "tokio 1.36.0",
  "uuid",
+ "viuer",
 ]
 
 [[package]]

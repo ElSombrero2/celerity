@@ -23,9 +23,9 @@ async fn login(payload: web::Query<OAuth2Payload>) -> impl Responder {
         if state.eq("celerity.io") {
             if Github::authenticate(GithubClient {
                 code: code.to_string(),
-                client_id: env::var("CLIENT_ID").unwrap_or_default(),
-                client_secret: env::var("CLIENT_SECRET").unwrap_or_default(),
-                redirect_uri: env::var("REDIRECT_URI").unwrap_or_default()
+                client_id: env::var("GITHUB_CLIENT_ID").unwrap_or_default(),
+                client_secret: env::var("GITHUB_CLIENT_SECRET").unwrap_or_default(),
+                redirect_uri: env::var("GITHUB_REDIRECT_URI").unwrap_or_default()
             }) {
                 println!("\nYour {} authenticate!", ansi_term::Colour::Green.bold().paint("successfully"));
             }else {
