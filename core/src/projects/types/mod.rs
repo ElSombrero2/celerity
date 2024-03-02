@@ -22,7 +22,7 @@ pub struct Todo {
 impl Todo {
     pub fn new(title: String) -> Self {
         Todo {
-            id: Uuid::new_v4().to_u128_le().to_string(),
+            id: Uuid::new_v4().simple().to_string(),
             title
         }
     }
