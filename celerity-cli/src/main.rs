@@ -34,6 +34,7 @@ async fn main(){
                     ProjectCommand::RemoveRow { id, row } => TodoAction::remove_row(&config, id, row),
                     ProjectCommand::RemoveTask { project_id, row, task_id } => TodoAction::remove_task(&config, project_id, task_id, row),
                     ProjectCommand::MoveTask { project_id, task_id, origin_row, target_row } => TodoAction::move_task(&config, project_id, task_id, origin_row, target_row),
+                    ProjectCommand::Open { id } => ProjectAction::open(&config, id),
                 }
             }
             _ => Messages::lib_description()

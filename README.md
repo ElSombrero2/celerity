@@ -23,6 +23,7 @@ Commands:
   remove-row
   remove-task
   move-task
+  open
   help         Print this message or the help of the given subcommand(s)
 
 Options:
@@ -117,13 +118,13 @@ this is only the development public repository but a beta version will coming so
 - [x] Have a todolist for all projects
     - [x] Generate an empty Todolist for the project
     - [x] Show the state and progression of the project based to the Todolist
-- [ ] Create a CLI tool
+- [x] Create a CLI tool
     - [x] Command that allow you to connect to your github account
     - [x] Command that show all your templates
     - [x] Command that create a new project from an existing template
     - [x] Command that show the user information from github
     - [x] Command that show all the project and folders
-    - [ ] Command that open a specific project in vscode
+    - [x] Command that open a specific project in vscode
 - [ ] Create a GUI
     - [ ] Create a GUI model
     - [ ] Show the list of all current project in your based project folder
