@@ -14,6 +14,8 @@ For more information refer to the help section or write an issue on this reposit
 ## Help
 
 ```bash
+Celerity is a simple tool to init your project based on templates
+
 Usage: celerity.exe [OPTIONS] [COMMAND]
 
 Commands:
@@ -27,14 +29,14 @@ Commands:
   help         Print this message or the help of the given subcommand(s)
 
 Options:
-      --todo-list <TODO_LIST>  Show all Todos
-  -t, --templates              See all templates available
-  -g, --github-login           Login with Github
-  -p, --projects               Show all projects
-      --project <PROJECT>      Find one project
-      --me                     Show all my Github account information
-  -h, --help                   Print help
-  -V, --version                Print version
+      --kanban <KANBAN>    Show all Todos
+  -t, --templates          See all templates available
+      --login              Login with Github
+      --projects           Show my projects
+      --project <PROJECT>  Find my project
+      --me                 Show my Github account information
+  -h, --help               Print help
+  -V, --version            Print version
 ```
 ## Environments
 ```dosini
@@ -115,7 +117,8 @@ this is only the development public repository but a beta version will coming so
             - [ ] React (Javascript / Typescript)
             - [ ] Angular
             - [ ] Vue.js
-        - [ ] Next.js
+        - [ ] Next.js (Javascript / Typescript)
+        - [ ] Nuxt.js (Javascript / Typescript)
 - [x] Show the list of your project templates
     - Show the name of the template
     - Show the Author of the template
