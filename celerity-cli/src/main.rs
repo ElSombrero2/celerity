@@ -30,6 +30,10 @@ async fn main(){
                 match subcommand {
                     ProjectCommand::Init { name, path, template } => ProjectAction::init(&mut config, template, name, path),
                     ProjectCommand::AddTodo { id, row, title } => TodoAction::add(&config, id, row, title),
+                    ProjectCommand::AddRow { id, row } => TodoAction::add_row(&config, id, row),
+                    ProjectCommand::RemoveRow { id, row } => TodoAction::remove_row(&config, id, row),
+                    ProjectCommand::RemoveTask { project_id, row, task_id } => TodoAction::remove_task(&config, project_id, task_id, row),
+                    ProjectCommand::MoveTask { project_id, task_id, origin_row, target_row } => TodoAction::move_task(&config, project_id, task_id, origin_row, target_row),
                 }
             }
             _ => Messages::lib_description()

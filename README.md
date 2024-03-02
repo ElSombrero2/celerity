@@ -19,17 +19,21 @@ Usage: celerity.exe [OPTIONS] [COMMAND]
 Commands:
   init
   add-todo
-  help      Print this message or the help of the given subcommand(s)
+  add-row
+  remove-row
+  remove-task
+  move-task
+  help         Print this message or the help of the given subcommand(s)
 
 Options:
-    --todo-list <TODO_LIST>  Show all Todos
-    -t, --templates              See all templates available
-    -g, --github-login           Login with Github
-    -p, --projects               Show all projects
-        --project <PROJECT>      Find one project
-        --me                     Show all my Github account information
-    -h, --help                   Print help
-    -V, --version                Print version
+      --todo-list <TODO_LIST>  Show all Todos
+  -t, --templates              See all templates available
+  -g, --github-login           Login with Github
+  -p, --projects               Show all projects
+      --project <PROJECT>      Find one project
+      --me                     Show all my Github account information
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 ## Environments
 ```dosini
