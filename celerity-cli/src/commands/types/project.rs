@@ -45,5 +45,8 @@ pub enum ProjectCommand{
         origin_row: String,
         #[arg(long)]
         target_row: String,
+    },
+    Open {
+        id: String,
     }
 }

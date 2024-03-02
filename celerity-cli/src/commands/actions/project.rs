@@ -1,5 +1,5 @@
 use core::{config::types::Configuration, git::Git, projects::types::{template::Template, ConfigurationProject, Project, Todo}, utils::{json::Json, printer::SpinnerPrinter}};
-use std::{collections::HashMap, fs};
+use std::{collections::HashMap, fs, process::Command};
 use ansi_term::Colour::{Red, Green, Blue, White};
 use chrono::Local;
 use comfy_table::Table;
@@ -68,7 +68,7 @@ impl ProjectAction {
     }
 
     pub fn find_one(config: &Configuration, id: String) -> Option<&ConfigurationProject> {
-        config.projects.iter().find(|&project| project.id.eq(&id))
+        config.projects.iter().find(|&project| project.id.eq(&id) || project.name.eq(&id))
     }
 
     pub fn list(config: &Configuration, table: &mut Table){
@@ -77,6 +77,21 @@ impl ProjectAction {
             table.add_row(vec![&project.id, &project.name, &project.path ]);
         }
         println!("Project list ({})\n{}", config.projects.len(), table);
+    }
+
+    pub fn open(config: &Configuration, id: String){
+        if let Some(project) = Self::find_one(config, id) {
+            if cfg!(target_os = "windows") {
+                Command::new("code.cmd")
+                .args([&project.path])
+                .spawn()
+                .expect("Command code not found, please specify your vscode binary file to Path");
+            }else {
+                Command::new("code").args([&project.path])
+                .output()
+                .expect("Command code not found, please specify your vscode binary file to Path");
+            }
+        } 
     }
 
 }
