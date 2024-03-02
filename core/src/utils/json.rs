@@ -18,11 +18,14 @@ impl Json {
         Option::None
     }
 
-    pub fn save(content: String, path: String, filename: String) -> bool {
-        if !Path::new(&path).exists() {
-            fs::create_dir(&path).unwrap_or_default();   
+    pub fn save(content: String, path: String) -> bool {
+        let mut strs = path.split('/').collect::<Vec<&str>>();
+        strs.remove(strs.len() - 1);
+        let binding = strs.join("/");
+        let folder_path = binding.as_str();
+        if !Path::new(folder_path).exists() {
+            fs::create_dir(folder_path).unwrap_or_default();   
         }
-        println!("{path}/{filename}");
-        fs::write(format!("{path}/{filename}"), content).is_ok()
+        fs::write(path, content).is_ok()
     }   
 }

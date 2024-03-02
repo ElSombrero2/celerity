@@ -13,5 +13,7 @@ ansi_term = { workspace = true }
 spinoff = { workspace = true }
 reqwest = { workspace = true }
 uuid = { workspace = true }
+chrono = { workspace = true }
+viuer = { workspace = true }
 actix-web = "4"
 open = "5.0.1"

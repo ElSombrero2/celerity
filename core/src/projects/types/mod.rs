@@ -32,7 +32,7 @@ impl Todo {
 pub struct Project {
     pub id: String,
     pub name: String,
-    pub create_at: String,
+    pub created_at: String,
     pub docker: bool,
     pub based_template: String,
     pub board: HashMap<String, Vec<Todo>>
@@ -41,6 +41,6 @@ pub struct Project {
 impl Project {
     pub fn save(project: Project, path: String) -> bool {
         let content = serde_json::to_string_pretty(&project).unwrap_or_default();
-        Json::save(content, path, "project.json".to_owned())
+        Json::save(content, path)
     }
 }

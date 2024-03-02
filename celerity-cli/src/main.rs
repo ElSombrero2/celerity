@@ -1,8 +1,21 @@
-use core::{auth::server::Server, config::types::Configuration, git::github::types::Github, utils::json::Json};
-use commands::{actions::{project::ProjectAction, template::TemplateAction, todo::TodoAction, user::UserAction}, types::project::ProjectCommand};
+use comfy_table::{presets::UTF8_FULL_CONDENSED, Table};
 use messages::Messages;
 use clap::Parser;
-use comfy_table::Table;
+use std::env;
+use commands::{
+    controllers::{
+        project::ProjectController,
+        template::TemplateController,
+        todo::TodoControllers,
+        user::UserController
+    },
+    types::project::ProjectCommand
+};
+use core::{
+    auth::server::Server,
+    git::github::types::Github,
+    services::configuration::ConfigurationService
+};
 
 mod commands;
 mod messages;
@@ -12,29 +25,37 @@ async fn main(){
     dotenvy::dotenv().expect("Error while loading env");
     let cmd = commands::Commands::parse();
     let mut table = Table::new();
-    if cmd.github_login { Server::start().await; }
-    if let Some(mut config) = Json::read::<Configuration>(".config/configuration.json".to_owned()) {
+    table.set_width(3);
+    table.apply_modifier(UTF8_FULL_CONDENSED);
+
+    if cmd.login { Server::start().await; }
+    if let Ok(mut config) = ConfigurationService::get_configuration(env::var("CONFIG_FILE").unwrap_or_default()) {
         if !Github::ping(config.github_token.to_owned().unwrap_or_default()){
             Messages::expiration_message();
             Server::start().await;
             println!("Reexecute your command");
         }
         match cmd {
-            commands::Commands { templates: true, .. } => TemplateAction::list(&mut table),
-            commands::Commands { projects: true, .. } => ProjectAction::list(&config, &mut table),
-            commands::Commands { project: Some(project), ..  } => println!("Project {}", project),
-            commands::Commands { me: true, .. } => UserAction::show(&config).await,
-            commands::Commands { todo_list: Some(project_id), .. } => TodoAction::list(&config, project_id, &mut table),
+            commands::Commands { templates: true, .. } => {
+                TemplateController::show_templates(
+                    env::var("TEMPLATE_FOLDER").unwrap_or_default(), 
+                    &mut table
+                )
+            },
+            commands::Commands { projects: true, .. } => ProjectController::show_all(&config, &mut table),
+            commands::Commands { project: Some(project), ..  } => ProjectController::find_one(&config, project, &mut table),
+            commands::Commands { me: true, .. } => UserController::show_user(&config),
+            commands::Commands { kanban: Some(project_id), .. } => TodoControllers::show_board(&config, project_id, &mut table),
             
             commands::Commands { subcommand: Some(subcommand), ..} => {
                 match subcommand {
-                    ProjectCommand::Init { name, path, template } => ProjectAction::init(&mut config, template, name, path),
-                    ProjectCommand::AddTodo { id, row, title } => TodoAction::add(&config, id, row, title),
-                    ProjectCommand::AddRow { id, row } => TodoAction::add_row(&config, id, row),
-                    ProjectCommand::RemoveRow { id, row } => TodoAction::remove_row(&config, id, row),
-                    ProjectCommand::RemoveTask { project_id, row, task_id } => TodoAction::remove_task(&config, project_id, task_id, row),
-                    ProjectCommand::MoveTask { project_id, task_id, origin_row, target_row } => TodoAction::move_task(&config, project_id, task_id, origin_row, target_row),
-                    ProjectCommand::Open { id } => ProjectAction::open(&config, id),
+                    ProjectCommand::Init { name, path, template } => ProjectController::init_project(&mut config, template, name, path),
+                    ProjectCommand::AddTodo { project, row, title } => TodoControllers::add(&config, project, row, title),
+                    ProjectCommand::AddRow { project, row } => TodoControllers::add_row(&config, project, row),
+                    ProjectCommand::RemoveRow { project, row } => TodoControllers::remove_row(&config, project, row),
+                    ProjectCommand::RemoveTask { project, row, task_id } => TodoControllers::remove_task(&config, project, task_id, row),
+                    ProjectCommand::MoveTask { project, task_id, origin_row, target_row } => TodoControllers::move_task(&config, project, task_id, origin_row, target_row),
+                    ProjectCommand::Open { project } => ProjectController::open(&config, project),
                 }
             }
             _ => Messages::lib_description()
@@ -43,4 +64,5 @@ async fn main(){
         Messages::lib_description(); 
         Messages::config_error(); 
     }
+
 }

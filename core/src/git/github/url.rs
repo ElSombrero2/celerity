@@ -13,9 +13,9 @@ impl ApiUrl {
     
     pub fn authorization() -> String {
         ApiUrl::github("/login/oauth/authorize?")
-        + &format!("client_id={}", env::var("CLIENT_ID").unwrap_or_default())
-        + &format!("&redirect_uri={}", env::var("REDIRECT_URI").unwrap_or_default())
-        + &format!("&state={}", env::var("STATE").unwrap_or_default())
-        + &format!("&{}", env::var("EXTRA").unwrap_or_default())
+        + &format!("client_id={}", env::var("GITHUB_CLIENT_ID").unwrap_or_default())
+        + &format!("&redirect_uri={}", env::var("GITHUB_REDIRECT_URI").unwrap_or_default())
+        + &format!("&state={}", env::var("GITHUB_STATE").unwrap_or_default())
+        + &format!("&{}", env::var("GITHUB_EXTRA").unwrap_or_default())
     }
 }

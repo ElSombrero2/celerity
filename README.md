@@ -38,14 +38,22 @@ Options:
 ```
 ## Environments
 ```dosini
-CLIENT_SECRET=<YOUR GITHUB APP CLIENT SECRET>
-CLIENT_ID=<YOUR GITHUB APP CLIENT ID>
-REDIRECT_URI=<YOUR GITHUB APP REDIRECT URI>
+GITHUB_CLIENT_SECRET=
+GITHUB_CLIENT_ID=
+GITHUB_REDIRECT_URI=http://127.0.0.1:8100/login
 GITHUB_BASE_URL=https://github.com
-SCOPE=<YOUR SCOPE>
-STATE=celerity.io
-EXTRA="allow_signup=true"
+GITHUB_SCOPE=repo,user
+GITHUB_STATE=celerity.io
+GITHUB_EXTRA="allow_signup=true"
 GITHUB_API_BASE_URL=https://api.github.com
+
+TEMPLATE_FOLDER=./examples/templates/
+CELERITY_FOLDER=.celerity/
+CONFIG_FOLDER=./.config/
+
+CELERITY_FILE=.celerity/project.json
+AVATAR_FILE=./.config/avatar.png
+CONFIG_FILE=.config/configuration.json
 ```
 ## CLI
 For help command use
@@ -61,17 +69,14 @@ cargo run --bin celerity -- --templates
 ```
 To login with github
 ```bash
-cargo run --bin celerity -- --github-login
-# Or
-cargo run --bin celerity -- -g
-
+cargo run --bin celerity -- --login
 ```
 For initialize a new project use
 ```bash
 cargo run --bin celerity -- init --template \
 <YOUR_TEMPLATE> \
-<YOUR_PROJECT_NAME> \
-<YOUR_PROJECT_PATH>
+--name <YOUR_PROJECT_NAME> \
+--path <YOUR_PROJECT_PATH>
 ```
 ## Desktop App
 Make sure that you've install the tauri command before running the project in dev mode
@@ -127,7 +132,6 @@ this is only the development public repository but a beta version will coming so
     - [x] Command that open a specific project in vscode
 - [ ] Create a GUI
     - [ ] Create a GUI model
-    - [ ] Show the list of all current project in your based project folder
     - [ ] Allow you to see the list of all project with:
         - Creation Date
         - Last commit and the current branch of the project
