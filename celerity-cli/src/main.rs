@@ -11,7 +11,7 @@ use commands::{
     },
     types::project::ProjectCommand
 };
-use core::{
+use celerity_core::{
     auth::server::Server,
     git::github::types::Github,
     services::configuration::ConfigurationService

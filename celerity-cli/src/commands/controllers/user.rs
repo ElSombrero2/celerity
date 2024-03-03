@@ -2,7 +2,7 @@ use clearscreen::clear;
 use viuer::{print_from_file, Config};
 use ansi_term::Color::Green;
 use std::env;
-use core::{
+use celerity_core::{
     config::types::Configuration,
     services::user::UserService
 };

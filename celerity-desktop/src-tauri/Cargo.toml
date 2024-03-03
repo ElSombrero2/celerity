@@ -14,6 +14,8 @@ tauri-build = { version = "1.5", features = [] }
 tauri = { version = "1.5", features = ["shell-open"] }
 serde = { workspace = true }
 serde_json = { workspace = true }
+dotenvy = { workspace = true }
+celerity-core = { path = "../../celerity-core" }
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem

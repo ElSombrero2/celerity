@@ -1,4 +1,4 @@
-use core::{
+use celerity_core::{
     config::types::Configuration,
     services::project::ProjectService,
     utils::printer::SpinnerPrinter

@@ -2,7 +2,7 @@ use crate::messages::Messages;
 use std::collections::HashMap;
 use ansi_term::Color::Blue;
 use comfy_table::Table;
-use core::{
+use celerity_core::{
     config::types::Configuration,
     projects::types::Todo,
     services::todo::TodoService

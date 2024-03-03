@@ -534,11 +534,11 @@ name = "celerity"
 version = "0.1.0"
 dependencies = [
  "ansi_term",
+ "celerity-core",
  "chrono",
  "clap",
  "clearscreen",
  "comfy-table",
- "core",
  "dotenvy",
  "figlet-rs",
  "indoc",
@@ -551,9 +551,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "celerity-core"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "ansi_term",
+ "chrono",
+ "git2",
+ "open 5.0.1",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "spinoff",
+ "tokio 1.36.0",
+ "uuid",
+ "viuer",
+]
+
+[[package]]
 name = "celerity-desktop"
 version = "0.0.0"
 dependencies = [
+ "celerity-core",
+ "dotenvy",
  "serde",
  "serde_json",
  "tauri",
@@ -777,24 +797,6 @@ dependencies = [
  "percent-encoding",
  "time 0.3.34",
  "version_check",
-]
-
-[[package]]
-name = "core"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "ansi_term",
- "chrono",
- "git2",
- "open 5.0.1",
- "reqwest",
- "serde",
- "serde_json",
- "spinoff",
- "tokio 1.36.0",
- "uuid",
- "viuer",
 ]
 
 [[package]]
