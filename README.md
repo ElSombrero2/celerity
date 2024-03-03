@@ -81,7 +81,10 @@ cargo run --bin celerity -- init --template \
 --path <YOUR_PROJECT_PATH>
 ```
 ## Desktop App
-Make sure that you've install the tauri command before running the project in dev mode
+Make sure that you've install the tauri command before running the project in dev mode  
+
+`Important`: You need to create a `.env.desktop` file for starting the desktop app.  
+See the example file on the root of the project.
 ```bash
 cargo tauri dev
 ```
