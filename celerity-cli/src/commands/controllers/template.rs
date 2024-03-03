@@ -1,4 +1,4 @@
-use core::services::template::TemplateService;
+use celerity_core::services::template::TemplateService;
 
 use comfy_table::Table;
 

@@ -14,7 +14,7 @@ spinoff = { workspace = true }
 chrono = { workspace = true }
 uuid = { workspace = true }
 viuer = { workspace = true }
-core = { path = "../core" }
+celerity-core = { path = "../celerity-core" }
 clap = {version = "4.5.1", features = ["derive"]}
 comfy-table = "7.1.0"
 figlet-rs = "0.1.5"

@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "core",
+    "celerity-core",
     "celerity-cli",
     "celerity-desktop/src-tauri"
 ]
