@@ -1,0 +1,17 @@
+
+div.board-wrapper {
+    overflow-x: auto;
+    div.board {
+        width: max-content;
+        border-radius: 5px;
+        flex-wrap: nowrap;
+        div.column{
+            width: 360px;
+            height: max-content;
+            min-height: 100%;
+            .title{
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+div.input {
+    position: relative;
+    border: 1px solid #ffffff22;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 100ms;
+    overflow: hidden;
+    .search-decoration {
+        position: absolute;
+        pointer-events: none;
+        font-size: 13px;
+        transition: transform 200ms;
+    }
+    input {
+        padding: 4px 10px;
+        width: 30vw;
+        opacity: 0;
+        transition: opacity 150ms;
+        background-color: transparent;
+        border: none;
+        &:focus-within { outline: none; }
+        &:focus{ opacity: 1; }
+        &:focus + .search-decoration { transform: translateY(-50px); }
+    }
+    &:has(input:focus) { background-color: #ffffff11; }
+}

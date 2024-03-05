@@ -1,0 +1,22 @@
+
+div.buttons{
+    button.title-button {
+        background-color: transparent;
+        border: none;
+        height: 35px;
+        width: 45px;
+        transition: background-color 180ms;
+        &:hover { background-color: #ffffff22; }
+        &:last-child{ border-top-right-radius: 10px; }
+        &:last-child:hover { background-color: #E04745ee; }
+        &:focus-within {
+            outline: none;
+        }
+    }
+}
+
+div.buttons.maximized{
+    button.title-button {
+        &:last-child { border-radius: 0; }
+    }
+}

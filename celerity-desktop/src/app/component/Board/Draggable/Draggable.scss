@@ -1,0 +1,32 @@
+:root{ --card-height: 0px; }
+
+div.drag-wrapper{
+    margin: 10px 0;
+    &::after, &::before{
+        width: 100%;
+        min-height: 1px;
+        content: 'Drop Me Here';
+        font-size: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        border: 0 dashed white;
+        background-color: #ffffff22;
+        opacity: 0;
+        transition: all 100ms;
+    }
+    &:not(.dragged){
+        &.bottom::after{ margin-top: 20px; }
+        &.top::before{ margin-bottom: 20px; }
+        &.top::before, &.bottom::after{ 
+            opacity: 1; 
+            min-height: var(--card-height);
+            border-width: 2px;
+            font-size: 20px;
+        }
+        &.top, &.bottom{ div { background-color: #ffffff33; } }
+    }
+}
+
+.dragged{ opacity: 0.2; }

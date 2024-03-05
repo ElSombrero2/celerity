@@ -115,6 +115,6 @@ impl ProjectService {
     }
 
     pub fn get_all(config: &Configuration) -> &Vec<ConfigurationProject> {
-        return &config.projects;
+        &config.projects
     }
 }
