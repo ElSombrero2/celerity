@@ -1,4 +1,4 @@
-export const board = {
+export const _board = {
     "Backlog": [
         {
             "id": "29c5d7e3495044779226dbf0ae5cf786",
