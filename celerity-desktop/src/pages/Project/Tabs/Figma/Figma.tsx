@@ -1,12 +1,34 @@
+import { useState } from 'react'
+import { AnimationPlayer } from '../../../../shared/AnimationPlayer/AnimationPlayer'
+import { Slot, Switch } from '../../../../shared/Switch/Switch'
 import './Figma.scss'
 
 export const Figma = () => {
+
+    const [loading, setLoading] = useState(true)
+
     return (
-        <iframe
-            className="figma"
-            src="https://www.figma.com/embed?embed_host=celerity.io
-            &embed_origin=http://localhost:1420
-            &url=https://www.figma.com/file/gzwMlEjliQymdB2KQ7oTQX/music-player"
-        />
+        <>
+            <Switch condition={!loading}>
+                <Slot name="default" className="w-100 h-100">
+                    <iframe
+                        onLoad={() => setLoading(false)}
+                        src="https://www.figma.com/embed?embed_host=celerity.io
+                        &embed_origin=http://localhost:1420
+                        &url=https://www.figma.com/file/gzwMlEjliQymdB2KQ7oTQX/music-player"
+                    />
+                </Slot>
+                <Slot name="fallback" className="w-100 h-100 d-flex justify-content-center align-items-center">
+                    <AnimationPlayer
+                        autoplay
+                        loop
+                        mode="normal"
+                        src="/loading.json"
+                        style={{display: 'block', width: '50vw', height: '50vh'}}
+                    />
+                </Slot>
+            </Switch>
+
+        </>
     )
 }
