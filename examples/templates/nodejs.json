@@ -3,8 +3,8 @@
     "author": "ElSombrero2",
     "path": {
         "source": "GITHUB",
-        "uri": "https://github.com/ElSombrero2/ambiant-light-front",
-        "branch": "develop"
+        "uri": "https://github.com/celerity-io/nodejs.git",
+        "branch": "main"
     },
     "description": "A simple Node Express Typescript Template"
 }

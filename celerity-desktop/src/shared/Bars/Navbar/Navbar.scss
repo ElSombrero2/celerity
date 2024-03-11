@@ -1,0 +1,30 @@
+@import '../../../ui/theme/color.scss';
+.flex{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar {
+    @extend .flex;
+    min-width: 40px;
+    padding: 10px;
+    height: calc(100vh - 35px);
+    background-color: $dark;
+    position: fixed;
+    left: 0;
+    top: 35px;
+    justify-content: space-between;
+    .items{@extend .flex; }
+    border-bottom-left-radius: 10px;
+}
+
+.avatar {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 50%;
+}

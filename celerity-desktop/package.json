@@ -10,9 +10,16 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.1",
+    "@lottiefiles/lottie-player": "^2.0.4",
+    "@reduxjs/toolkit": "^2.2.1",
     "@tauri-apps/api": "^1.5.3",
+    "@types/react-lottie": "^1.2.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
+    "react-redux": "^9.1.0",
+    "sass": "^1.71.1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.8",

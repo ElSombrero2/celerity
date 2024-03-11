@@ -1,18 +1,11 @@
-import { useEffect } from "react";
-import "./App.css";
-import { invoke } from "@tauri-apps/api";
+import "./App.scss";
+import { Project } from "./pages/Project/Project";
 
 function App() {
-
-  useEffect(() => {
-    invoke('get_configuration')
-    .then((res) => console.log(res))
-  }, []);
+  
 
   return (
-    <div className="container">
-      <h1>Hello World</h1>
-    </div>
+    <Project />  
   );
 }
 

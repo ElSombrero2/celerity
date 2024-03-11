@@ -17,3 +17,4 @@ reqwest = {version = "*", features = ["json", "blocking"] }
 chrono = "0.4.34"
 uuid = "1.7.0"
 viuer = "0.7.1"
+serde_yaml = "0.9.32"

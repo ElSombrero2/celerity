@@ -102,12 +102,12 @@ this is only the development public repository but a beta version will coming so
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
     - [ ] Initialize all files and push them to the user's Github Repository
-    - [ ] If there's a model then allow to take the figma link of the project
+    - [x] If there's a model then allow to take the figma link of the project
         - [x] Can give a name to the template
         - [x] Specify where can it fetches the template base project
             - On Github Repository (Only github for the first version but all the rests will coming soon)
     - [ ] Basics projects template
-        - [ ] Node.js (Javascript / Typescript)
+        - [x] Node.js (Javascript / Typescript)
         - [ ] Nest.js
         - [ ] Angular
         - [ ] React

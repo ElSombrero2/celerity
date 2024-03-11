@@ -1,0 +1,20 @@
+@import './theme/index.scss';
+@import './layout/index.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+
+    // TODO: Design the scrollbar
+}
+
+.markdown * {
+    padding: inherit;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+body{ overflow: hidden; }
