@@ -28,7 +28,6 @@ export const Figma = () => {
                     />
                 </Slot>
             </Switch>
-
         </>
     )
 }

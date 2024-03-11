@@ -1,5 +1,6 @@
-import React from "react"
-import { useSwitch } from "./Provider"
+import React from 'react'
+import { useSwitch } from './Provider'
+import './Switch.scss'
 
 export interface ISlot extends React.HTMLAttributes<HTMLDivElement> {
     name: 'default' | 'fallback'
@@ -20,11 +21,11 @@ export const Switch = ({children, condition}: ISwitch) => {
         <>
             <div
                 {...defaultElement.props}
-                className={!condition ? 'd-none' : defaultElement.props.className}
+                className={!condition ? 'switch-hidden' : defaultElement.props.className}
             />
             <div
                 {...fallback.props}
-                className={condition ? 'd-none' : fallback.props.className}
+                className={condition ? 'switch-hidden' : fallback.props.className}
             />
         </>
     )

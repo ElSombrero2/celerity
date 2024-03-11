@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { _board } from "../../../__mock__/board";
-import { BoardKeyIndex } from "../../../app/component/Board/Board";
 import { Task } from "../../../app/types/kanban";
+import { _board } from "../../../app/__mock__/board";
+import { BoardKeyIndex } from "../../../shared/Board/Board";
 
 export const useProject = () => {
     const [board, setBoard] = useState<{[key: string]: Task[]}>(_board);

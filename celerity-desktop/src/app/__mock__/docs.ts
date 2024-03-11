@@ -1,19 +1,21 @@
+
+export const _markdown = `
 # ✨ Celerity.io
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
 ## Why should I use Celerity.io? 🤔
 Because it's "Vita Malagasy". 🫡
 # How to run
-Considere that this tool is `only available in dev mode` now  
+Considere that this tool is \`only available in dev mode\` now  
 It will allow you to init a new project from the existing templates,  
 and will show all the existing template in the example templates folder  
 
-`Celerity.io` will search your config to .config/configuration.json  
+\`Celerity.io\` will search your config to .config/configuration.json  
 If the file does not exist then run the Github Login command.  
 Running this command will initialize all the use configuration.  
 For more information refer to the help section or write an issue on this repository.
 ## Help
 
-```bash
+\`\`\`bash
 Celerity is a simple tool to init your project based on templates
 
 Usage: celerity.exe [OPTIONS] [COMMAND]
@@ -37,9 +39,9 @@ Options:
       --me                 Show my Github account information
   -h, --help               Print help
   -V, --version            Print version
-```
+\`\`\`
 ## Environments
-```dosini
+\`\`\`dosini
 GITHUB_CLIENT_SECRET=
 GITHUB_CLIENT_ID=
 GITHUB_REDIRECT_URI=http://127.0.0.1:8100/login
@@ -56,41 +58,41 @@ CONFIG_FOLDER=./.config/
 CELERITY_FILE=.celerity/project.json
 AVATAR_FILE=./.config/avatar.png
 CONFIG_FILE=.config/configuration.json
-```
+\`\`\`
 ## CLI
 For help command use
-```bash
+\`\`\`bash
 # Help command
 cargo run --bin celerity -- --help
 # Show the current version
 cargo run --bin celerity -- --version
-```
+\`\`\`
 To show all available templates use
-```bash
+\`\`\`bash
 cargo run --bin celerity -- --templates
-```
+\`\`\`
 To login with github
-```bash
+\`\`\`bash
 cargo run --bin celerity -- --login
-```
+\`\`\`
 For initialize a new project use
-```bash
+\`\`\`bash
 cargo run --bin celerity -- init --template \
 <YOUR_TEMPLATE> \
 --name <YOUR_PROJECT_NAME> \
 --path <YOUR_PROJECT_PATH>
-```
+\`\`\`
 ## Desktop App
 Make sure that you've install the tauri command before running the project in dev mode  
 
-`Important`: You need to create a `.env.desktop` file for starting the desktop app.  
+\`Important\`: You need to create a \`.env.desktop\` file for starting the desktop app.  
 See the example file on the root of the project.
-```bash
+\`\`\`bash
 cargo tauri dev
-```
+\`\`\`
 ## Notes
 You can add more templates by adding files templates to
-`examples/templates` in the repository directory if you want to have more template for testing the tools  
+\`examples/templates\` in the repository directory if you want to have more template for testing the tools  
 this is only the development public repository but a beta version will coming soon.  
 
 # Todo
@@ -102,12 +104,12 @@ this is only the development public repository but a beta version will coming so
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
     - [ ] Initialize all files and push them to the user's Github Repository
-    - [x] If there's a model then allow to take the figma link of the project
+    - [ ] If there's a model then allow to take the figma link of the project
         - [x] Can give a name to the template
         - [x] Specify where can it fetches the template base project
             - On Github Repository (Only github for the first version but all the rests will coming soon)
     - [ ] Basics projects template
-        - [x] Node.js (Javascript / Typescript)
+        - [ ] Node.js (Javascript / Typescript)
         - [ ] Nest.js
         - [ ] Angular
         - [ ] React
@@ -148,3 +150,4 @@ this is only the development public repository but a beta version will coming so
             - If VS Code is not found then open the default browser to VS Code website
         - Button: Browse File
         - Short image or Logo of the project (if None then show the default image)
+`

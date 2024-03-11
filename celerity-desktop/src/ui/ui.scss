@@ -9,7 +9,12 @@
     color: whitesmoke;
 
     // TODO: Design the scrollbar
-    &::-webkit-scrollbar{ display: none; }
+}
+
+.markdown * {
+    padding: inherit;
+    margin: auto;
+    box-sizing: border-box;
 }
 
 body{ overflow: hidden; }

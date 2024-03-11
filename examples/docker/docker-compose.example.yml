@@ -1,0 +1,12 @@
+version: '3'
+services:
+  database:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-password
+    container_name: my-app-database
+    ports:
+      - 3306:3306
+    volumes:
+      - ./.volume/mysql:/var/lib/mysql
+      - ./.volume/mysql/conf:/etc/mysql/conf.d

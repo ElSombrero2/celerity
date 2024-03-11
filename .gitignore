@@ -3,3 +3,4 @@
 .env
 .config
 .env.desktop
+examples/docker/.volume
