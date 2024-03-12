@@ -36,10 +36,10 @@ export const Project = () => {
                 <TabItem className="h-100" title="Documentation">
                     <Documentation />
                 </TabItem>
-                <TabItem title="Informations">
+                <TabItem title="Services">
                     
                 </TabItem>
-                <TabItem title="Services">
+                <TabItem title="Logs">
                     
                 </TabItem>
             </Tab>

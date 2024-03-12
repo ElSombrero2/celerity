@@ -4,5 +4,9 @@
     @extend .h-100, .py-20,
     .px-30, .gap-34, .d-flex,
     .flex-column;
-    .tab{ max-height: 73vh; }
+}
+
+.tab{ 
+    max-height: 73vh;
+    height: 73vh; 
 }
