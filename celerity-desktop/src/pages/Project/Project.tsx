@@ -1,4 +1,3 @@
-import { useAppSelector } from "../../app/store";
 import { Tab } from "../../shared/Tab/Tab";
 import './Project.scss'
 import { TabItem } from "../../shared/Tab/TabItem/TabItem";
@@ -9,10 +8,11 @@ import { Figma } from "./Tabs/Figma/Figma";
 import { useState } from "react";
 import { Documentation } from "./Tabs/Documentations/Documentation";
 import { Board } from "../../shared/Board/Board";
+import { useParams } from "react-router-dom";
 
 export const Project = () => {
-    const configuration = useAppSelector((state) => state.ConfigurationReducer.configuration)
-    const { onTaskMove, board,  } = useProject()
+    const { id } = useParams<{id: string}>()
+    const { onTaskMove, board, configuration, readme } = useProject(id)
     const [current, setCurrent] = useState<string | undefined>()
 
     return (
@@ -24,17 +24,17 @@ export const Project = () => {
                 onItemClick={(title) => setCurrent(title)}
             >
                 <TabItem className="h-100" title="Board">
-                    <Board
+                    {board && <Board
                         factory={{title: Title, body: Body}}
                         board={board}
                         onTaskMove={onTaskMove}
-                    />
+                    />}
                 </TabItem>
                 <TabItem className="h-100" title="Figma">
                     <Figma />
                 </TabItem>
                 <TabItem className="h-100" title="Documentation">
-                    <Documentation />
+                    <Documentation markdown={readme || ''} />
                 </TabItem>
                 <TabItem title="Services">
                     

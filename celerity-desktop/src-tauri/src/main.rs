@@ -1,6 +1,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use std::env;
-use app::controllers::{configuration::get_configuration, template::get_templates};
+use app::controllers::{
+    configuration::get_configuration,
+    template::get_templates,
+    project::{get_project, get_documentation},
+};
 mod app;
 
 fn main() {
@@ -9,6 +13,8 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             get_configuration,
             get_templates,
+            get_project,
+            get_documentation
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
