@@ -13,6 +13,10 @@ and will show all the existing template in the example templates folder
 If the file does not exist then run the Github Login command.  
 Running this command will initialize all the use configuration.  
 For more information refer to the help section or write an issue on this repository.
+\`\`\`js
+let name = 'Cool';
+console.log('Hello World!');
+\`\`\`
 ## Help
 
 \`\`\`bash

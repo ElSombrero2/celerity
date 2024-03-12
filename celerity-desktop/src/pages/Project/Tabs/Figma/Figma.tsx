@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimationPlayer } from '../../../../shared/AnimationPlayer/AnimationPlayer'
 import { Slot, Switch } from '../../../../shared/Switch/Switch'
+import '../../Project.scss'
 import './Figma.scss'
 
 export const Figma = () => {
@@ -10,7 +11,7 @@ export const Figma = () => {
     return (
         <>
             <Switch condition={!loading}>
-                <Slot name="default" className="w-100 h-100">
+                <Slot name="default" className="w-100 tab">
                     <iframe
                         onLoad={() => setLoading(false)}
                         src="https://www.figma.com/embed?embed_host=celerity.io
@@ -18,7 +19,7 @@ export const Figma = () => {
                         &url=https://www.figma.com/file/gzwMlEjliQymdB2KQ7oTQX/music-player"
                     />
                 </Slot>
-                <Slot name="fallback" className="w-100 h-100 d-flex justify-content-center align-items-center">
+                <Slot name="fallback" className="tab w-100 h-100 d-flex justify-content-center align-items-center">
                     <AnimationPlayer
                         autoplay
                         loop
