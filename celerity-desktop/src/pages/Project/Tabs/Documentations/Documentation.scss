@@ -8,6 +8,9 @@
         margin: 20px 0;
         padding-bottom: 5px;
         border-bottom: 1px solid #ffffff22;
+        &:first-child{
+            margin-top: 0;
+        }
     }
 
     p{ 

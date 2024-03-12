@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Navbar.scss'
 import { invoke } from '@tauri-apps/api';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
 
@@ -13,9 +14,12 @@ export const Navbar = () => {
     return (
         <div className="navbar">
             <div className="items">
-                <i className="fa fa-plus"></i>
-                <i className="fa-solid fa-list"></i>
-                <i className="fa-solid fa-diagram-project"></i>
+                <Link to="">
+                    <i className="fa-solid fa-list"></i>
+                </Link>
+                <Link to="project/4585">
+                    <i className="fa-solid fa-diagram-project"></i>
+                </Link>
                 <i className="fa-solid fa-bars-progress"></i>
                 <i className="fa-solid fa-chart-simple"></i>
             </div>

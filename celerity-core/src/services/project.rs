@@ -1,4 +1,4 @@
-use std::{collections::HashMap, env, fs, process::Command};
+use std::{collections::HashMap, env, fs::{self, File}, io::Read, process::Command};
 use chrono::Local;
 use uuid::Uuid;
 use crate::{
@@ -116,5 +116,17 @@ impl ProjectService {
 
     pub fn get_all(config: &Configuration) -> &Vec<ConfigurationProject> {
         &config.projects
+    }
+
+    pub fn get_documentation(config: &Configuration, id: String) -> Result<String, CelerityError> {
+        if let Ok(project) = Self::find_one(config, id) {
+            if let Ok(mut file) = File::open(format!("{}README.md", project.path)) {
+                let mut buff = String::new();
+                if file.read_to_string(&mut buff).is_ok() {
+                    return Ok(buff);
+                }
+            }
+        } 
+        Err(CelerityError::NotFound)
     }
 }

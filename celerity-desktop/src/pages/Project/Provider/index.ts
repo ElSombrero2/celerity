@@ -1,26 +1,22 @@
-import { useState } from "react";
-import { Task } from "../../../app/types/kanban";
+import { useEffect, useState } from "react";
 import { _board } from "../../../app/__mock__/board";
-import { BoardKeyIndex } from "../../../shared/Board/Board";
+import { useProjectBoard } from "./Board";
+import { useAppSelector } from "../../../app/store";
+import { invoke } from "@tauri-apps/api";
+import { useReadme } from "./Readme";
 
-export const useProject = () => {
-    const [board, setBoard] = useState<{[key: string]: Task[]}>(_board);
+export const useProject = (id: string | undefined) => {
+    const [ project, setProject ] = useState<any>(null)
+    const { onTaskMove, board } = useProjectBoard(project?.board)
+    const configuration = useAppSelector(state => state.ConfigurationReducer.configuration)
+    const readme = useReadme(configuration, id)
     
-    const onTaskMove = (origin: BoardKeyIndex, target: BoardKeyIndex) => {
-        if(origin.index !== undefined){
-        const removed = board[origin.key].splice(origin.index, 1)
-        if(target.index !== undefined){
-            board[target.key] = [
-            ...board[target.key].slice(0, target.index),
-            ...removed,
-            ...board[target.key].slice(target.index)
-            ]
-        } else {
-            board[target.key].push(removed[0])
+    useEffect(() => {
+        if(id && configuration) {
+            invoke('get_project', {config: configuration, id})
+            .then(setProject)
         }
-        setBoard({...board})
-        }
-    }
+    }, [id, configuration]);
 
-    return { onTaskMove, board }
+    return { board, onTaskMove, configuration, project, readme }
 }
