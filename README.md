@@ -1,7 +1,7 @@
 # ✨ Celerity.io
 Is a simple project manager that include a CLI tool help you to manage your projects and generate them based on a simple template.  
 ## Why should I use Celerity.io? 🤔
-Because it's "Vita Malagasy". 🫡
+Because it's "Vita Malagasy". 🫡 (Funny Joke that only few people will understand)
 # How to run
 Considere that this tool is `only available in dev mode` now  
 It will allow you to init a new project from the existing templates,  
@@ -51,7 +51,9 @@ GITHUB_STATE=celerity.io
 GITHUB_EXTRA="allow_signup=true"
 GITHUB_API_BASE_URL=https://api.github.com
 
-TEMPLATE_FOLDER=./examples/templates/
+# Note: See more about template file in examples/templates
+TEMPLATE_FOLDER=<YOUR_TEMPLATES_FILES_FOLDER>
+
 CELERITY_FOLDER=.celerity/
 CONFIG_FOLDER=./.config/
 
