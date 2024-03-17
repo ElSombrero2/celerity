@@ -11,7 +11,10 @@ and will show all the existing template in the example templates folder
 If the file does not exist then run the Github Login command.  
 Running this command will initialize all the use configuration.  
 For more information refer to the help section or write an issue on this repository.
-## Help
+## CLI
+![image](https://res.cloudinary.com/dcsdcjmug/image/upload/v1710710902/lbqkfbztij8iocykkipa.gif)
+
+## Usage
 
 ```bash
 Celerity is a simple tool to init your project based on templates
