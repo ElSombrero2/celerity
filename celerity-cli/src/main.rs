@@ -4,10 +4,7 @@ use clap::Parser;
 use std::env;
 use commands::{
     controllers::{
-        project::ProjectController,
-        template::TemplateController,
-        todo::TodoControllers,
-        user::UserController
+        docker::DockerController, project::ProjectController, template::TemplateController, todo::TodoControllers, user::UserController
     },
     types::project::ProjectCommand
 };
@@ -56,6 +53,8 @@ async fn main(){
                     ProjectCommand::RemoveTask { project, row, task_id } => TodoControllers::remove_task(&config, project, task_id, row),
                     ProjectCommand::MoveTask { project, task_id, origin_row, target_row } => TodoControllers::move_task(&config, project, task_id, origin_row, target_row),
                     ProjectCommand::Open { project } => ProjectController::open(&config, project),
+                    ProjectCommand::Services { project } => DockerController::get_services(&config, project, &mut table),
+                    ProjectCommand::Cmd { project, command } => DockerController::exec(&config, project, command),
                 }
             }
             _ => Messages::lib_description()
