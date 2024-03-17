@@ -4,4 +4,5 @@ pub mod git;
 pub mod projects;
 pub mod auth;
 pub mod errors;
+pub mod docker;
 pub mod services;

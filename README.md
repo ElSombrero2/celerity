@@ -19,13 +19,15 @@ Celerity is a simple tool to init your project based on templates
 Usage: celerity.exe [OPTIONS] [COMMAND]
 
 Commands:
-  init
-  add-todo
-  add-row
-  remove-row
-  remove-task
-  move-task
-  open
+  init         Initialize your project
+  add-todo     Add a new task to your Kanban Board
+  add-row      Add a new row to your Kanban Board
+  remove-row   Remove an existing Row to your Kanban Board
+  remove-task  Remove an existing Task to your Kanban Board
+  move-task    Move a task from an origin row to a target row
+  open         Open your project with Visual Studio Code (Need the code command in your environment variable Path)
+  services     Show all the docker services of your project (docker-compose is required)
+  cmd          execute a docker-compose command to your project (docker-compose is required)
   help         Print this message or the help of the given subcommand(s)
 
 Options:
@@ -94,34 +96,33 @@ You can add more templates by adding files templates to
 this is only the development public repository but a beta version will coming soon.  
 
 # Todo
-- [ ] Initialize a project with differents options
+- [x] Initialize a project with differents options
     - [x] Choose a project template
     - [x] Create a Github repository and push it in Github
         - [x] Integrate github Authentication with Token
         - [x] Refresh the token when it's expired
     - [x] Save all configurations in json project file
     - [x] Allow the user to create his own template by using a json file description
-    - [ ] Initialize all files and push them to the user's Github Repository
     - [x] If there's a model then allow to take the figma link of the project
         - [x] Can give a name to the template
         - [x] Specify where can it fetches the template base project
             - On Github Repository (Only github for the first version but all the rests will coming soon)
-    - [ ] Basics projects template
-        - [x] Node.js (Javascript / Typescript)
-        - [ ] Nest.js
+- [ ] Basics projects template
+    - [x] Node.js (Javascript / Typescript)
+    - [ ] Nest.js
+    - [ ] Angular
+    - [ ] React
+    - [ ] Vue.js
+    - [ ] Svelt
+    - [ ] Solid
+    - [ ] C++
+    - [ ] Rust
+    - [ ] Tauri
+        - [ ] React (Javascript / Typescript)
         - [ ] Angular
-        - [ ] React
         - [ ] Vue.js
-        - [ ] Svelt
-        - [ ] Solid
-        - [ ] C++
-        - [ ] Rust
-        - [ ] Tauri
-            - [ ] React (Javascript / Typescript)
-            - [ ] Angular
-            - [ ] Vue.js
-        - [ ] Next.js (Javascript / Typescript)
-        - [ ] Nuxt.js (Javascript / Typescript)
+    - [ ] Next.js (Javascript / Typescript)
+    - [ ] Nuxt.js (Javascript / Typescript)
 - [x] Show the list of your project templates
     - Show the name of the template
     - Show the Author of the template
@@ -137,7 +138,7 @@ this is only the development public repository but a beta version will coming so
     - [x] Command that show all the project and folders
     - [x] Command that open a specific project in vscode
 - [ ] Create a GUI
-    - [ ] Create a GUI model
+    - [x] Create a GUI model
     - [ ] Allow you to see the list of all project with:
         - Creation Date
         - Last commit and the current branch of the project

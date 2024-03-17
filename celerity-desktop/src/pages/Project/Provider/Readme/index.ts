@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Configuration } from "../../../../app/types/configuration";
 import { invoke } from "@tauri-apps/api";
 
-
 export const useReadme = (config: Configuration | null, id?: string) => {
     const [readme, setReadme] = useState<string>('')
 
