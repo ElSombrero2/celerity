@@ -14,6 +14,16 @@ For more information refer to the help section or write an issue on this reposit
 ## CLI
 ![image](https://res.cloudinary.com/dcsdcjmug/image/upload/v1710710902/lbqkfbztij8iocykkipa.gif)
 
+## Desktop
+
+### Embed Kanban board
+
+![image](https://res.cloudinary.com/dcsdcjmug/image/upload/v1710806987/a1tri0arj5efcqi18puh.gif)
+
+### Figma integration
+
+![image](https://res.cloudinary.com/dcsdcjmug/image/upload/v1710806987/zsu7m9jmjgsveddnqmjy.gif)
+
 ## Usage
 
 ```bash

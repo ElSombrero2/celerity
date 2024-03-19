@@ -14,17 +14,12 @@ export const Navbar = () => {
     return (
         <div className="navbar">
             <div className="items">
+                <img src={avatar} className="avatar" />
                 <Link to="">
-                    <i className="fa-solid fa-list"></i>
+                    <i className="fa-solid fa-home"></i>
                 </Link>
-                <Link to="project/4585">
-                    <i className="fa-solid fa-diagram-project"></i>
-                </Link>
-                <i className="fa-solid fa-bars-progress"></i>
-                <i className="fa-solid fa-chart-simple"></i>
             </div>
             <div className="items">
-                <img src={avatar} className="avatar" />
                 <i className="fa-solid fa-gear"></i>
             </div>
         </div>

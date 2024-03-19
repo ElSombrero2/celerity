@@ -6,7 +6,7 @@ use crate::{
         template::Template,
         ConfigurationProject,
         Project, 
-        Todo
+        Todos
     }, utils::json::Json
 };
 
@@ -41,7 +41,7 @@ impl ProjectService {
 
     fn init_project(name: String, path: &String, id: String, based_template: String){
         let created_at = Local::now();
-        let board: HashMap<String, Vec<Todo>> = HashMap::new();
+        let board: HashMap<String, Todos> = HashMap::new();
         Project::save(Project {
             id, name, board, based_template,
             created_at: created_at.to_rfc3339(),

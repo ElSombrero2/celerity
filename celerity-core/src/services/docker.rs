@@ -9,8 +9,8 @@ pub struct DockerService;
 impl DockerService {
 
     fn parse_services_from_json(services: &mut Vec<DockerServices>, content: String){
-        if content.len() > 0 {
-            let jsons = content.split("\n").collect::<Vec<&str>>();
+        if !content.is_empty() {
+            let jsons = content.split('\n').collect::<Vec<&str>>();
             for json in jsons {
                 if let Ok(service) = serde_json::from_str::<DockerComposeCommand>(json) {
                     services.push(DockerServices {
@@ -31,7 +31,7 @@ impl DockerService {
     fn parse_services_from_yaml(services: &mut Vec<DockerServices>, path: String){
         if let Some(yml) = Yaml::read::<DockerCompose>(path) {
             for key in yml.services.keys() {
-                if services.to_owned().into_iter().find(|e| e.name.eq(key)).is_some() { continue }
+                if services.iter().any(|e| e.name.eq(key)) { continue }
                 services.push(DockerServices::new(
                     key.to_owned(),
                     String::from("never_started"),
@@ -61,7 +61,7 @@ impl DockerService {
         Err(CelerityError::NotFound)
     }
 
-    pub fn exec<F>(config: &Configuration, id: String, command: String, on_exec: F) where F: Fn(String) {
+    pub fn exec<F>(config: &Configuration, id: String, command: String, on_exec: F) where F: Fn(String) -> bool {
         if let Some((_, project_cfg)) = ProjectService::get_project(config, id) {
             if let Ok(mut cmd) = Command::new("docker-compose").args([
                 "-f",
@@ -74,11 +74,11 @@ impl DockerService {
                 let stdout_reader = BufReader::new(stdout);
                 let stdout_lines = stdout_reader.lines();
 
-                for line in stdout_lines.into_iter().flatten() {
-                    on_exec(line.to_owned());
+                for line in stdout_lines.into_iter().map_while(Result::ok) {
+                    if on_exec(line.to_owned()) {
+                        break;
+                    }
                 }
-
-                cmd.wait().unwrap();
             }
         }
     }

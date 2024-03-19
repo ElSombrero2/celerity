@@ -42,7 +42,7 @@ impl DockerServices {
             state,
             ports: Some(String::from('-')),
             id: Some(String::from('-')),
-            image: image,
+            image,
         }
     }
 }

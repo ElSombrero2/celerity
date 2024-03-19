@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Task } from "../../../../app/types/kanban";
+import { Todos } from "../../../../app/types/kanban";
 import { BoardKeyIndex } from "../../../../shared/Board/Board";
 
-export const useProjectBoard = (_board?: {[key: string]: Task[]}) => {
-    const [board, setBoard] = useState<{[key: string]: Task[]} | undefined>(_board);
+export const useProjectBoard = (_board?: {[key: string]: Todos}) => {
+    const [board, setBoard] = useState<{[key: string]: Todos} | undefined>(_board);
     
     useEffect(() => {
         if(_board) setBoard(_board)
@@ -12,15 +12,15 @@ export const useProjectBoard = (_board?: {[key: string]: Task[]}) => {
     const onTaskMove = (origin: BoardKeyIndex, target: BoardKeyIndex) => {
         if(board){
             if(origin.index !== undefined){
-                const removed = board[origin.key].splice(origin.index, 1)
+                const removed = board[origin.key].todos.splice(origin.index, 1)
                 if(target.index !== undefined){
-                    board[target.key] = [
-                    ...board[target.key].slice(0, target.index),
+                    board[target.key].todos = [
+                    ...board[target.key].todos.slice(0, target.index),
                     ...removed,
-                    ...board[target.key].slice(target.index)
+                    ...board[target.key].todos.slice(target.index)
                     ]
                 } else {
-                    board[target.key].push(removed[0])
+                    board[target.key].todos.push(removed[0])
                 }
                 setBoard({...board})
             }

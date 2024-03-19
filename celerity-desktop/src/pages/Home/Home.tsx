@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../app/store'
 import './Home.scss'
+import { Card } from '../../ui/components/Cards/Card/Card'
 
 export const Home = () => {
 
@@ -8,7 +9,11 @@ export const Home = () => {
 
     return (
         <div className="home-container">
-            <h1>Hello, Elsombrero</h1>
+            <h1>Hello, </h1>
+            <Card>
+                <h3>News of the day</h3>
+                
+            </Card>
             <ul>
                 {config?.projects.map((p) => (
                     <li key={p.id}>

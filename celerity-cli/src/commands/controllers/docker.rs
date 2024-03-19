@@ -30,9 +30,10 @@ impl DockerController {
         }
     }
 
-    pub fn exec(config: &Configuration, id: String, command: String){
-        DockerService::exec(config, id, command, |output| {
+    pub fn exec(config: Configuration, id: String, command: String){
+        DockerService::exec(&config, id, command, move |output| {
             println!("{}", output);
+            false
         });
     }
 }

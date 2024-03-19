@@ -4,7 +4,7 @@ use ansi_term::Color::Blue;
 use comfy_table::Table;
 use celerity_core::{
     config::types::Configuration,
-    projects::types::Todo,
+    projects::types::Todos,
     services::todo::TodoService
 };
 
@@ -12,11 +12,11 @@ pub struct TodoControllers;
 
 impl TodoControllers {
     /* --------------------------- PRIVATE ----------------------------- */
-    fn get_max_length(boards: &HashMap<String, Vec<Todo>>) -> usize {
+    fn get_max_length(boards: &HashMap<String, Todos>) -> usize {
         let keys = boards.keys();
         let mut max = 0;
         for key in keys {
-            max = if max < boards.get(key).unwrap().len() {boards.get(key).unwrap().len()} else { max };
+            max = if max < boards.get(key).unwrap().todos.len() {boards.get(key).unwrap().todos.len()} else { max };
         }
         max
     }
@@ -29,18 +29,19 @@ impl TodoControllers {
                 println!("Your board is empty, please add rows and tasks");
                 return;
             }else {
-                let keys = board.keys().collect::<Vec<&String>>();
-                table.set_header(&keys).set_width(5);
                 let max_lenght = Self::get_max_length(&board);
+                let mut sorted_board: Vec<_> = board.iter().collect();
+                
+                sorted_board.sort_by(|a, b|{ a.1.id.partial_cmp(&b.1.id).unwrap() });
+
+                table.set_header(sorted_board.iter().map(|(s, _)|{ s })).set_width(5);
                 for i in 0..max_lenght {
                     let mut rows = Vec::<String>::new();
-                    for key in &keys {
-                        if let Some(todo) = board.get(key.to_owned()) {
-                            if let Some(found_todo) = todo.get(i) {
-                                rows.push(format!("Id: {}\nTitle: {}", found_todo.id, found_todo.title));
-                            }else {
-                                rows.push(" ".to_string());
-                            }
+                    for (_, todo) in &sorted_board {
+                        if let Some(found_todo) = todo.todos.get(i) {
+                            rows.push(format!("Id: {}\nTitle: {}", found_todo.id, found_todo.title));
+                        }else {
+                            rows.push(" ".to_string());
                         }
                     }
                     table.add_row(rows);
