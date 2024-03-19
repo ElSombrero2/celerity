@@ -1,21 +1,21 @@
-use std::env;
+use dotenv_codegen::dotenv;
 
 pub struct ApiUrl;
 
 impl ApiUrl {
     pub fn github(path: &str) -> String {
-        env::var("GITHUB_BASE_URL").unwrap_or_default().to_owned() + path
+        dotenv!("GITHUB_BASE_URL").to_owned() + path
     }
     
     pub fn github_api(path: &str) -> String{
-        env::var("GITHUB_API_BASE_URL").unwrap_or_default().to_owned() + path
+        dotenv!("GITHUB_API_BASE_URL").to_owned() + path
     }
     
     pub fn authorization() -> String {
         ApiUrl::github("/login/oauth/authorize?")
-        + &format!("client_id={}", env::var("GITHUB_CLIENT_ID").unwrap_or_default())
-        + &format!("&redirect_uri={}", env::var("GITHUB_REDIRECT_URI").unwrap_or_default())
-        + &format!("&state={}", env::var("GITHUB_STATE").unwrap_or_default())
-        + &format!("&{}", env::var("GITHUB_EXTRA").unwrap_or_default())
+        + &format!("client_id={}", dotenv!("GITHUB_CLIENT_ID").to_string())
+        + &format!("&redirect_uri={}", dotenv!("GITHUB_REDIRECT_URI").to_string())
+        + &format!("&state={}", dotenv!("GITHUB_STATE").to_string())
+        + &format!("&{}", dotenv!("GITHUB_EXTRA").to_string())
     }
 }

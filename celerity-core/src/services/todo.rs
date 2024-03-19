@@ -1,5 +1,7 @@
+use dotenv_codegen::dotenv;
+
 use super::project::ProjectService;
-use std::{collections::HashMap, env};
+use std::collections::HashMap;
 use crate::{
     config::types::Configuration,
     errors::CelerityError,
@@ -20,7 +22,7 @@ impl TodoService {
         Project::save(
             project, 
             configuration_project.path.to_string() + 
-            &env::var("CELERITY_FILE").unwrap_or_default()
+            &dotenv!("CELERITY_FILE").to_string()
         );
     }
 

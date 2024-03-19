@@ -1,7 +1,7 @@
 use comfy_table::{presets::UTF8_FULL_CONDENSED, Table};
+use dotenv_codegen::dotenv;
 use messages::Messages;
 use clap::Parser;
-use std::env;
 use commands::{
     controllers::{
         docker::DockerController, project::ProjectController, template::TemplateController, todo::TodoControllers, user::UserController
@@ -11,7 +11,7 @@ use commands::{
 use celerity_core::{
     auth::server::Server,
     git::github::types::Github,
-    services::configuration::ConfigurationService
+    services::configuration::ConfigurationService, utils::__dirname
 };
 
 mod commands;
@@ -19,14 +19,15 @@ mod messages;
 
 #[tokio::main]
 async fn main(){
-    dotenvy::dotenv().expect("Error while loading env");
     let cmd = commands::Commands::parse();
     let mut table = Table::new();
     table.set_width(3);
     table.apply_modifier(UTF8_FULL_CONDENSED);
 
+    println!("{}", __dirname(dotenv!("TEMPLATE_FOLDER")));
+
     if cmd.login { Server::start().await; }
-    if let Ok(mut config) = ConfigurationService::get_configuration(env::var("CONFIG_FILE").unwrap_or_default()) {
+    if let Ok(mut config) = ConfigurationService::get_configuration(__dirname(dotenv!("CONFIG_FILE"))) {
         if !Github::ping(config.github_token.to_owned().unwrap_or_default()){
             Messages::expiration_message();
             Server::start().await;
@@ -35,7 +36,7 @@ async fn main(){
         match cmd {
             commands::Commands { templates: true, .. } => {
                 TemplateController::show_templates(
-                    env::var("TEMPLATE_FOLDER").unwrap_or_default(), 
+                    __dirname(dotenv!("TEMPLATE_FOLDER")), 
                     &mut table
                 )
             },

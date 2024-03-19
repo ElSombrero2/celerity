@@ -1,5 +1,6 @@
-use std::{collections::HashMap, env, fs::{self, File}, io::Read, process::Command};
+use std::{collections::HashMap, fs::{self, File}, io::Read, process::Command};
 use chrono::Local;
+use dotenv_codegen::dotenv;
 use uuid::Uuid;
 use crate::{
     config::types::Configuration, errors::CelerityError, git::Git, projects::types::{
@@ -7,7 +8,7 @@ use crate::{
         ConfigurationProject,
         Project, 
         Todos
-    }, utils::json::Json
+    }, utils::{__dirname, json::Json}
 };
 
 
@@ -46,7 +47,7 @@ impl ProjectService {
             id, name, board, based_template,
             created_at: created_at.to_rfc3339(),
             docker: Self::is_docker(path.to_owned())
-        }, path.to_owned() + &env::var("CELERITY_FILE").unwrap_or_default());
+        }, path.to_owned() + &dotenv!("CELERITY_FILE").to_string());
     }
 
      // --------------------------- PRIVATE -----------------------------
@@ -61,7 +62,7 @@ impl ProjectService {
         arg: &mut A
     ) -> Result<(), CelerityError> where F: FnOnce(&mut A), G: FnOnce(&mut A)
     {
-        let filepath = env::var("TEMPLATE_FOLDER").unwrap_or_default() + template.as_str() + ".json";
+        let filepath = __dirname(dotenv!("TEMPLATE_FOLDER")) + template.as_str() + ".json";
         if let Some(template) = Json::read::<Template>(filepath) {
             on_clone(arg);
             if let Some (dir) =  Git::clone (
@@ -93,7 +94,7 @@ impl ProjectService {
         if let Ok(configuration_project) = ProjectService::find_one(configuration, id) {
             if let Some(project) = Json::read::<Project>(
                 configuration_project.path.to_string() + 
-                &env::var("CELERITY_FILE").unwrap_or_default()
+                &dotenv!("CELERITY_FILE").to_string()
             ) {
                 return Some((project, configuration_project));
             }
