@@ -1,0 +1,22 @@
+@import '../../../../ui/ui.scss';
+
+.logs {
+    height: 72vh;
+    form{
+        width: 100%;
+        @extend .d-flex, .gap-24;
+        button, select, option { color: black; }
+    }
+    .code{
+        width: 100%;
+        pre {
+            &:not(.inside){
+                border: 1px solid #{$light}66;
+            }
+            border-radius: 5px;
+            background-color: #{$light}05 !important;
+            height: 100%;
+            overflow: scroll;
+        }
+    }
+}

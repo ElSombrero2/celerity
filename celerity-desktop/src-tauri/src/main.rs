@@ -4,6 +4,7 @@ use app::controllers::{
     configuration::get_configuration,
     template::get_templates,
     project::{get_project, get_documentation},
+    docker::{get_services, exec}
 };
 mod app;
 
@@ -14,7 +15,9 @@ fn main() {
             get_configuration,
             get_templates,
             get_project,
-            get_documentation
+            get_documentation,
+            get_services,
+            exec
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

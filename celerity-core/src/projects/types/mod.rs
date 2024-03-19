@@ -13,10 +13,16 @@ pub struct ConfigurationProject {
     pub name: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Todo {
     pub id: String,
     pub title: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct Todos {
+    pub id: usize,
+    pub todos: Vec<Todo>
 }
 
 impl Todo {
@@ -28,14 +34,14 @@ impl Todo {
     }
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Project {
     pub id: String,
     pub name: String,
     pub created_at: String,
     pub docker: bool,
     pub based_template: String,
-    pub board: HashMap<String, Vec<Todo>>
+    pub board: HashMap<String, Todos>
 }
 
 impl Project {

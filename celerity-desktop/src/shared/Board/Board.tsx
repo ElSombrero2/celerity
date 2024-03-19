@@ -1,11 +1,12 @@
 import React, { useRef } from "react"
 import { Draggable } from "./Draggable/Draggable"
 import './Board.scss'
+import { Todos } from "../../app/types/kanban"
 
 export type BoardKeyIndex = {index?: number, key: string}
 
 export interface IBoard { 
-    board: {[key: string]: any[]},
+    board: {[key: string]: Todos},
     factory: {
         title: (key: string) => React.ReactElement,
         body: (data: any) => React.ReactElement,
@@ -26,14 +27,14 @@ export function Board({ board, factory, onTaskMove }: IBoard){
     return (
         <div className="board-wrapper w-100 h-100" ref={parent}>
             <div className="board h-100 d-flex gap-90" onDragOver={drop}>
-                {Object.keys(board).map((key, boardIndex) => (
+                {Object.keys(board).sort((a, b) => board[a].id - board[b].id).map((key, boardIndex) => (
                     <div
-                        onDrop={(e) => onTaskMove && board[key].length === 0 && onTaskMove(getOrigin(e), {key})}
+                        onDrop={(e) => onTaskMove && board[key].todos.length === 0 && onTaskMove(getOrigin(e), {key})}
                         key={`${key}-${boardIndex}`}
                         className="column px-4 d-flex flex-column"
                     >
                         {factory.title(key)}
-                        {board[key].map((data: any, columnIndex: number) => (
+                        {board[key].todos.map((data: any, columnIndex: number) => (
                             <Draggable index={columnIndex}
                                 origin={key}
                                 key={columnIndex}

@@ -54,7 +54,7 @@ async fn main(){
                     ProjectCommand::MoveTask { project, task_id, origin_row, target_row } => TodoControllers::move_task(&config, project, task_id, origin_row, target_row),
                     ProjectCommand::Open { project } => ProjectController::open(&config, project),
                     ProjectCommand::Services { project } => DockerController::get_services(&config, project, &mut table),
-                    ProjectCommand::Cmd { project, command } => DockerController::exec(&config, project, command),
+                    ProjectCommand::Cmd { project, command } => DockerController::exec(config, project, command),
                 }
             }
             _ => Messages::lib_description()

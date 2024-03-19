@@ -15,3 +15,42 @@
 }
 
 body{ overflow: hidden; }
+
+.code{
+    height: 100%;
+    overflow: auto;
+
+    h1, h2, h3, h4, h5{
+        margin: 20px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ffffff22;
+        &:first-child{
+            margin-top: 0;
+        }
+    }
+
+    p{ 
+        margin: 10px 0;
+        code {
+            background: #{$primary}22;
+            color: $primary;
+            padding: 2px 5px;
+            border-radius: 8px;
+        } 
+    }
+
+    pre.inside {
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #222;
+    }
+
+    ul{
+        list-style: none;
+        li:first-child{ margin: 0; }
+        li{
+            line-height: 1.8em;
+            margin-left: 30px;
+        }
+    }
+}
