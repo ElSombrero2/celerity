@@ -21,8 +21,8 @@ impl TodoService {
     fn save(project: Project, configuration_project: &ConfigurationProject){
         Project::save(
             project, 
-            configuration_project.path.to_string() + 
-            &dotenv!("CELERITY_FILE").to_string()
+            configuration_project.path.to_string() +
+            dotenv!("CELERITY_FILE")
         );
     }
 

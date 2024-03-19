@@ -15,7 +15,8 @@
     "@reduxjs/toolkit": "^2.2.1",
     "@tauri-apps/api": "^1.5.3",
     "@types/react-lottie": "^1.2.10",
-    "ansi-to-react": "^6.1.6",
+    "ansi-to-html": "^0.7.2",
+    "html-react-parser": "^5.1.9",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "moment": "^2.30.1",
@@ -27,7 +28,7 @@
     "react-router-dom": "^6.22.3",
     "remark-gfm": "^4.0.0",
     "sass": "^1.71.1",
-    "sort-by": "^1.2.0"
+    "sort-by": "^0.0.2"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.8",

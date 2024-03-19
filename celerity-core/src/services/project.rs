@@ -47,7 +47,7 @@ impl ProjectService {
             id, name, board, based_template,
             created_at: created_at.to_rfc3339(),
             docker: Self::is_docker(path.to_owned())
-        }, path.to_owned() + &dotenv!("CELERITY_FILE").to_string());
+        }, path.to_owned() + dotenv!("CELERITY_FILE"));
     }
 
      // --------------------------- PRIVATE -----------------------------
@@ -94,7 +94,7 @@ impl ProjectService {
         if let Ok(configuration_project) = ProjectService::find_one(configuration, id) {
             if let Some(project) = Json::read::<Project>(
                 configuration_project.path.to_string() + 
-                &dotenv!("CELERITY_FILE").to_string()
+                dotenv!("CELERITY_FILE")
             ) {
                 return Some((project, configuration_project));
             }
