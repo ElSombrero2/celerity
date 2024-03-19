@@ -65,13 +65,13 @@ GITHUB_EXTRA="allow_signup=true"
 GITHUB_API_BASE_URL=https://api.github.com
 
 # Note: See more about template file in examples/templates
-TEMPLATE_FOLDER=<YOUR_TEMPLATES_FILES_FOLDER>
+TEMPLATE_FOLDER=/examples/templates/
 
 CELERITY_FOLDER=.celerity/
 
 CELERITY_FILE=.celerity/project.json
-AVATAR_FILE=./.config/avatar.png
-CONFIG_FILE=.config/configuration.json
+AVATAR_FILE=/.config/avatar.png
+CONFIG_FILE=/.config/configuration.json
 ```
 ## CLI
 For help command use
