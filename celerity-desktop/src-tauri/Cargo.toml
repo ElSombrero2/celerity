@@ -9,6 +9,7 @@ edition = "2021"
 
 [build-dependencies]
 tauri-build = { version = "1.5", features = [] }
+dotenvy = { workspace = true }
 
 [dependencies]
 tauri = { version = "1.5", features = [ "shell-open", "window-all"] }

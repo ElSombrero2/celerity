@@ -9,7 +9,6 @@ use app::controllers::{
 mod app;
 
 fn main() {
-    dotenvy::from_filename(".env.desktop").unwrap_or_default();
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             get_configuration,
