@@ -3,6 +3,10 @@ name = "celerity"
 version = "0.1.0"
 authors = ["ElSombrero"]
 edition = "2021"
+build = "build.rs"
+
+[build-dependencies]
+dotenvy = { workspace = true }
 
 [dependencies]
 serde = { workspace = true }
@@ -14,6 +18,7 @@ spinoff = { workspace = true }
 chrono = { workspace = true }
 uuid = { workspace = true }
 viuer = { workspace = true }
+dotenv_codegen = { workspace = true }
 celerity-core = { path = "../celerity-core" }
 clap = {version = "4.5.1", features = ["derive"]}
 comfy-table = "7.1.0"

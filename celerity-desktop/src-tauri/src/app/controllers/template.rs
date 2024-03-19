@@ -1,7 +1,10 @@
-use std::env;
-use celerity_core::{projects::types::template::Template, services::template::TemplateService};
+use celerity_core::{
+    projects::types::template::Template,
+    services::template::TemplateService, utils::__dirname
+};
+use dotenv_codegen::dotenv;
 
 #[tauri::command]
 pub fn get_templates() -> Option<Vec<Option<Template>>>{
-    Some(TemplateService::list(env::var("TEMPLATE_FOLDER").unwrap_or_default()))
+    Some(TemplateService::list(__dirname(dotenv!("TEMPLATE_FOLDER"))))
 }

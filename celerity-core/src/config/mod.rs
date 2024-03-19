@@ -1,6 +1,6 @@
-use std::env;
+use dotenv_codegen::dotenv;
 
-use crate::{auth::OAuth2Response, git::github::types::Github, utils::json::Json};
+use crate::{auth::OAuth2Response, git::github::types::Github, utils::{__dirname, json::Json}};
 use self::types::Configuration;
 
 pub mod types;
@@ -16,7 +16,7 @@ impl Configuration {
     }
 
     pub fn register(oauth2_response: OAuth2Response) -> bool {
-        if let Some(mut configuration) = Json::read::<Configuration>(env::var("CONFIG_FILE").unwrap_or_default()) {
+        if let Some(mut configuration) = Json::read::<Configuration>(__dirname(dotenv!("CONFIG_FILE"))) {
             configuration.github_token = Some(oauth2_response.access_token);
             return Configuration::save(&configuration);
         }
@@ -27,7 +27,7 @@ impl Configuration {
     
     pub fn save(configuration: &Configuration) -> bool {
         let content = serde_json::to_string_pretty(&configuration).unwrap_or_default();
-        Json::save(content, env::var("CONFIG_FILE").unwrap_or_default())
+        Json::save(content, __dirname(dotenv!("CONFIG_FILE")))
     }
     
 }

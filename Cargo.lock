@@ -539,6 +539,7 @@ dependencies = [
  "clap",
  "clearscreen",
  "comfy-table",
+ "dotenv_codegen",
  "dotenvy",
  "figlet-rs",
  "indoc",
@@ -557,6 +558,8 @@ dependencies = [
  "actix-web",
  "ansi_term",
  "chrono",
+ "dotenv_codegen",
+ "dotenvy",
  "git2",
  "open 5.0.1",
  "reqwest",
@@ -574,6 +577,7 @@ name = "celerity-desktop"
 version = "0.0.0"
 dependencies = [
  "celerity-core",
+ "dotenv_codegen",
  "dotenvy",
  "serde",
  "serde_json",
@@ -1084,6 +1088,35 @@ name = "dispatch"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bd0c93bb4b0c6d9b77f4435b0ae98c24d17f1c45b2ff844c6151a07256ca923b"
+
+[[package]]
+name = "dotenv"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77c90badedccf4105eca100756a0b1289e191f6fcbdadd3cee1d2f614f97da8f"
+
+[[package]]
+name = "dotenv_codegen"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "56966279c10e4f8ee8c22123a15ed74e7c8150b658b26c619c53f4a56eb4a8aa"
+dependencies = [
+ "dotenv_codegen_implementation",
+ "proc-macro-hack",
+]
+
+[[package]]
+name = "dotenv_codegen_implementation"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "53e737a3522cd45f6adc19b644ce43ef53e1e9045f2d2de425c1f468abd4cf33"
+dependencies = [
+ "dotenv",
+ "proc-macro-hack",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
 
 [[package]]
 name = "dotenvy"

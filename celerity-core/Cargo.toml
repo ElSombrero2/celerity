@@ -16,5 +16,7 @@ reqwest = { workspace = true }
 uuid = { workspace = true }
 chrono = { workspace = true }
 viuer = { workspace = true }
+dotenvy = { workspace = true }
+dotenv_codegen = { workspace = true }
 actix-web = "4"
 open = "5.0.1"

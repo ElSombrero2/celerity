@@ -1,5 +1,5 @@
-use std::env;
 use actix_web::{get, web, HttpResponse, Responder};
+use dotenv_codegen::dotenv;
 use serde::Deserialize;
 use crate::{auth::server::Server, git::github::types::{Github, GithubClient}};
 
@@ -23,9 +23,9 @@ async fn login(payload: web::Query<OAuth2Payload>) -> impl Responder {
         if state.eq("celerity.io") {
             if Github::authenticate(GithubClient {
                 code: code.to_string(),
-                client_id: env::var("GITHUB_CLIENT_ID").unwrap_or_default(),
-                client_secret: env::var("GITHUB_CLIENT_SECRET").unwrap_or_default(),
-                redirect_uri: env::var("GITHUB_REDIRECT_URI").unwrap_or_default()
+                client_id: dotenv!("GITHUB_CLIENT_ID").to_string(),
+                client_secret: dotenv!("GITHUB_CLIENT_SECRET").to_string(),
+                redirect_uri: dotenv!("GITHUB_REDIRECT_URI").to_string()
             }) {
                 println!("\nYour {} authenticate!", ansi_term::Colour::Green.bold().paint("successfully"));
             }else {
