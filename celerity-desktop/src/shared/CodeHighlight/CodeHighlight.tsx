@@ -1,6 +1,7 @@
-import Ansi from "ansi-to-react"
 import { Highlight, PrismTheme, themes } from "prism-react-renderer"
 import React from "react"
+import Convert from 'ansi-to-html'
+import parser from 'html-react-parser'
 
 interface CodeHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
     node: Element,
@@ -10,6 +11,8 @@ interface CodeHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
 export const CodeHighlight = ({children, className, node, theme, ...rest}: CodeHighlightProps) => {
     const match = /language-(\w+)/.exec(className || '')
     const langage = className?.split('language-')[1]
+
+    const converter = new Convert()
 
     if(langage && match) return (
         <Highlight
@@ -23,7 +26,7 @@ export const CodeHighlight = ({children, className, node, theme, ...rest}: CodeH
                         <div key={i} {...getLineProps({ line })}>
                             {line.map((token, key) => 
                                 <span key={key} {...getTokenProps({ token })}>
-                                    <Ansi>{getTokenProps({ token }).children}</Ansi>
+                                    {parser(converter.toHtml(getTokenProps({ token }).children))}
                                 </span>
                             )}
                         </div>

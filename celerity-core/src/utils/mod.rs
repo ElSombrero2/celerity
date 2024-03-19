@@ -11,5 +11,5 @@ pub fn __dirname(path: &str) -> String{
         dir.pop();
         return dir.to_string_lossy().to_string() + path;
     }
-    return String::from('.') + path
+    String::from('.') + path
 }

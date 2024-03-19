@@ -15,7 +15,7 @@ impl UserController {
         if let Ok(user) = UserService::get_user(config) {
             clear().unwrap_or_default();
             let config = Config { x: 5, y: 0, width: Some(8), height: Some(4), ..Default::default() };
-            print_from_file(__dirname(dotenv!("AVATAR_FILE")).to_string(), &config)
+            print_from_file(__dirname(dotenv!("AVATAR_FILE")), &config)
             .unwrap_or_default();
             println!("\nHello {}\nAlso known as {} 😎", 
                 Green.bold().paint(user.name.to_owned().unwrap_or_default()),
