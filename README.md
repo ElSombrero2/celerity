@@ -11,6 +11,15 @@ and will show all the existing template in the example templates folder
 If the file does not exist then run the Github Login command.  
 Running this command will initialize all the use configuration.  
 For more information refer to the help section or write an issue on this repository.
+## Installation
+### Windows
+You just need the last version of Rust  
+If you have an error in compilation please run an `rustup` command to update your Rust version  
+### Mac & Linux
+lib dependencies:
+- protoc
+- musl-dev
+- libssl-dev 
 ## CLI
 ![image](https://res.cloudinary.com/dcsdcjmug/image/upload/v1710710902/lbqkfbztij8iocykkipa.gif)
 
