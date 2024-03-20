@@ -24,8 +24,6 @@ async fn main(){
     table.set_width(3);
     table.apply_modifier(UTF8_FULL_CONDENSED);
 
-    println!("{}", __dirname(dotenv!("TEMPLATE_FOLDER")));
-
     if cmd.login { Server::start().await; }
     if let Ok(mut config) = ConfigurationService::get_configuration(__dirname(dotenv!("CONFIG_FILE"))) {
         if !Github::ping(config.github_token.to_owned().unwrap_or_default()){

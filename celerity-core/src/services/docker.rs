@@ -1,8 +1,14 @@
-use std::{io::{BufRead, BufReader}, os::windows::process::CommandExt, process::{Command, Stdio}};
-
-use crate::{config::types::Configuration, docker::{DockerCompose, DockerComposeCommand, DockerServices}, errors::CelerityError, utils::yaml::Yaml};
-
+use std::{io::{BufRead, BufReader}, process::{Command, Stdio}, vec};
 use super::project::ProjectService;
+use crate::{
+    config::types::Configuration,
+    docker::{
+        DockerCompose,
+        DockerComposeCommand,
+        DockerServices
+    },
+    errors::CelerityError, utils::yaml::Yaml
+};
 
 pub struct DockerService;
 
@@ -63,11 +69,14 @@ impl DockerService {
 
     pub fn exec<F>(config: &Configuration, id: String, command: String, on_exec: F) where F: Fn(String) -> bool {
         if let Some((_, project_cfg)) = ProjectService::get_project(config, id) {
-            if let Ok(mut cmd) = Command::new("docker-compose").args([
-                "-f",
-                &format!("{}docker-compose.yml", project_cfg.path)
-            ])
-            .raw_arg(command)
+            let path = &format!("{}docker-compose.yml", project_cfg.path);
+            let mut command_args = vec!["-f", path];
+
+            for c in command.split(' ') {
+                command_args.push(c);
+            }
+
+            if let Ok(mut cmd) = Command::new("docker-compose").args(command_args)
             .stdout(Stdio::piped())
             .spawn() {
                 let stdout = cmd.stdout.as_mut().unwrap();
