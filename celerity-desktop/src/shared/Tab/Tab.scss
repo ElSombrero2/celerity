@@ -1,25 +1,18 @@
 .tab-wrapper{
     .menu{
-        display: flex;
-        width: 100%;
-        border-bottom: 1px solid #ffffff22;
-        padding: 10px 0;
-        gap: 20px;
+        @apply flex border-b py-2 gap-5;
         .item{ 
             cursor: pointer;
             transition: opacity 300ms;
             &:hover{ opacity: 0.7; }
             &:active{ opacity: 0.3; }
             &.active{
-                color: #E04745;
+                @apply text-destructive;
                 &::after{
+                    @apply bg-destructive block w-full relative;
                     content: ' ';
-                    display: block;
-                    width: 100%;
                     height: 1px;
-                    background-color: #E04745;
-                    position: relative;
-                    top: 11px;
+                    top: 9px;
                 }
             }
         }

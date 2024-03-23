@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.scss";
 import { Project } from "./pages/Project/Project";
 import { Home } from "./pages/Home/Home";
 import { TitleBar } from "./shared/Bars/TitleBar/TitleBar";

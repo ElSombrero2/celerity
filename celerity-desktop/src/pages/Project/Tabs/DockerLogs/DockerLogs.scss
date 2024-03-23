@@ -1,22 +1,17 @@
 @import '../../../../ui/ui.scss';
 
 .logs {
-    height: 72vh;
+    height: 74vh;
     form{
         width: 100%;
-        @extend .d-flex, .gap-24;
-        button, select, option { color: black; }
+        @apply flex gap-30;
     }
     .code{
-        width: 100%;
+        @apply w-full;
         pre {
-            &:not(.inside){
-                border: 1px solid #{$light}66;
-            }
-            border-radius: 5px;
+            @apply rounded-md overflow-scroll bg-accent h-full;
+            &:not(.inside){ @apply border; }
             background-color: #{$light}05 !important;
-            height: 100%;
-            overflow: scroll;
         }
     }
 }

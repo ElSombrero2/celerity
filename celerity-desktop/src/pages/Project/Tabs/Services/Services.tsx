@@ -1,5 +1,7 @@
+import { Button } from '@/ui/components/ui/button'
 import { useServices } from '../../../../app/core/hooks/services'
 import './Service.scss'
+import { Checkbox } from '@/ui/components/ui/checkbox'
 
 export const Services = ({project}: {project?: string}) =>  {
 
@@ -10,7 +12,7 @@ export const Services = ({project}: {project?: string}) =>  {
             <table>
                 <thead>
                     <tr className="table-row">
-                        <th><input type="checkbox" name="" id="" /></th>
+                        <th><Checkbox /></th>
                         <th>Name</th>
                         <th>Image</th>
                         <th>State</th>
@@ -23,14 +25,18 @@ export const Services = ({project}: {project?: string}) =>  {
                 <tbody>
                     {services.map((service, index) => (
                         <tr key={`${service.name}-${index}`} className="table-row">
-                            <td><input type="checkbox" name="" id="" /></td>
+                            <td><Checkbox /></td>
                             <td>{service.name}</td>
                             <td>{service.image}</td>
                             <td>{service.state}</td>
                             <td>{service.ports?.length ? service.ports : '-'}</td>
                             <td>{service.size}</td>
                             <td>{service.project}</td>
-                            <td><button>start</button></td>
+                            <td>
+                                <Button variant="outline">
+                                    <span className="fa fa-play"></span>
+                                </Button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

@@ -1,7 +1,5 @@
 @import '../../ui/ui.scss';
 
 .home-container{
-    @extend .h-100, .py-20,
-    .px-30, .gap-34, .d-flex,
-    .flex-column;
+    @apply h-full py-20 px-30 gap-34 flex flex-col;
 }

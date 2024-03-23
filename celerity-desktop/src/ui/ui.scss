@@ -1,12 +1,11 @@
 @import './theme/index.scss';
 @import './layout/index.scss';
+@import './global.scss';
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: whitesmoke;
 
     // TODO: Design the scrollbar
     &::-webkit-scrollbar{
@@ -17,23 +16,17 @@
 body{ overflow: hidden; }
 
 .code{
-    height: 100%;
-    overflow: auto;
-
+    @apply h-full overflow-auto;
     h1, h2, h3, h4, h5{
-        margin: 20px 0;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #ffffff22;
+        @apply my-15 pb-10 border-b;
         &:first-child{
-            margin-top: 0;
+            @apply mt-0;
         }
     }
 
     p{ 
-        margin: 10px 0;
+        @apply my-15;
         code {
-            background: #{$primary}22;
-            color: $primary;
             padding: 2px 5px;
             border-radius: 8px;
         } 

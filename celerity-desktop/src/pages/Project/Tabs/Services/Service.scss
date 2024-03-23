@@ -1,19 +1,16 @@
 .services{
     table {
-        width: 100%;
-        border-collapse: collapse;
+        @apply w-full border-collapse;
         tr {
-            border-bottom: 1px solid #ffffff22;
-            td, th{
-                text-align: left;
-                padding: 15px 0;
-            }
+            @apply border-b border-b-secondary;
+            th{ @apply text-left pb-3; }
+            td{ @apply text-left py-3; }
         }
 
-        thead tr { border-color: #ffffff88; }
+        thead tr { 
+            @apply border-b border-b-primary;
+         }
 
-        tbody tr:last-child {
-            border-bottom: none;
-        }
+        tbody tr:last-child { @apply border-none; }
     }
 }

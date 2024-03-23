@@ -1,6 +1,10 @@
 import { LegacyRef } from "react"
 import { DockerServices } from "../../../../../../app/types/docker"
 import { State } from "../../Provider"
+import { Button } from "@/ui/components/ui/button"
+import { Select } from "@/ui/components/ui/select"
+import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select"
+import { Input } from "@/ui/components/ui/input"
 
 export interface IControls {
     form: LegacyRef<HTMLFormElement> | null,
@@ -19,22 +23,13 @@ export const Controls = ({form, started, allowLogs, onStart, onStop, services, l
 
     return (
         <form ref={form} onSubmit={e => e.preventDefault()}>
-            <button disabled={disabled} onClick={() => started ? onStop() : onStart()}>
+            <Button variant="outline" disabled={disabled} onClick={() => started ? onStop() : onStart()}>
                 {label}
-            </button>
-            <button disabled={disabled} onClick={onClear}>
+            </Button>
+            <Button variant="destructive" disabled={disabled} onClick={onClear}>
                 Clear
-            </button>
-            <select name="service" disabled={!allowLogs || started}>
-                <option value="*" style={{color: 'black'}}>
-                    -- All --
-                </option>
-                {services.map((service, index) => (
-                    <option style={{color: 'black'}} key={`${service.name}-${index}`} value={service.name}>
-                        {service.name}
-                    </option>
-                ))}
-            </select>
+            </Button>
+            <Input className="w-[250px]" placeholder="Services" />
         </form>
     )
 }

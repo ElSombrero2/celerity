@@ -1,8 +1,4 @@
 
 iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 5px;
-    border: 1px solid #ffffff66;
+    @apply w-full h-full rounded-md border border-solid border-secondary;
 }

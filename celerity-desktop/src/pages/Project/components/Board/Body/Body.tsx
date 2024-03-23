@@ -1,5 +1,5 @@
+import { Card } from "@/ui/components/ui/card";
 import { Task } from "../../../../../app/types/kanban";
-import { Card } from "../../../../../ui/components/Cards/Card/Card";
 
 export const Body = (task: Task) => (
     <Card>

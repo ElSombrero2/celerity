@@ -14,7 +14,7 @@ export const Tab: React.FunctionComponent<ITab> = ({ children, current, onItemCl
     const { isActive, currentElement } = useTab(children, current)
 
     return (
-        <div {...props} className={`tab-wrapper d-flex flex-column gap-24 ${props.className}`}>
+        <div {...props} className={`tab-wrapper d-flex flex-column gap-8 ${props.className}`}>
             <div className="menu">
                 {children.map(({props}, index) => (
                     <div

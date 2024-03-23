@@ -1,16 +1,8 @@
 div.input {
-    position: relative;
-    border: 1px solid #ffffff22;
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @apply relative border rounded-lg flex justify-center items-center overflow-hidden h-7;
     transition: background-color 100ms;
     overflow: hidden;
     .search-decoration {
-        position: absolute;
-        pointer-events: none;
-        font-size: 13px;
         transition: transform 200ms;
     }
     input {

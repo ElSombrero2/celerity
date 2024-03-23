@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../app/store'
 import './Home.scss'
-import { Card } from '../../ui/components/Cards/Card/Card'
+import { Card } from '@/ui/components/ui/card'
 
 export const Home = () => {
 

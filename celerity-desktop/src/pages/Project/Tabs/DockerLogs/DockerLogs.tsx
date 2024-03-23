@@ -12,7 +12,7 @@ export const DockerLogs = ({ project }: { project?: string }) => {
     const { allowLogs, services } = useServices(project)
 
     return (
-        <div className="logs d-flex flex-column gap-24">
+        <div className="logs flex flex-col gap-8">
             <Controls 
                 started={started}
                 form={form}
