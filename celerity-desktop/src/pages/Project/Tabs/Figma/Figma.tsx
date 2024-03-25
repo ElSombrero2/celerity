@@ -11,7 +11,7 @@ export const Figma = () => {
     return (
         <>
             <Switch condition={!loading}>
-                <Slot name="default" className="w-100 tab">
+                <Slot name="default" className="w-full tab">
                     <iframe
                         onLoad={() => setLoading(false)}
                         src="https://www.figma.com/embed?embed_host=celerity.io
@@ -19,7 +19,7 @@ export const Figma = () => {
                         &url=https://www.figma.com/file/gzwMlEjliQymdB2KQ7oTQX/music-player"
                     />
                 </Slot>
-                <Slot name="fallback" className="tab w-100 h-100 d-flex justify-content-center align-items-center">
+                <Slot name="fallback" className="tab w-full h-full flex justify-center items-center">
                     <AnimationPlayer
                         autoplay
                         loop

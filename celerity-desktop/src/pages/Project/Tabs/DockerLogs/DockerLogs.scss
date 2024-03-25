@@ -1,17 +1,15 @@
-@import '../../../../ui/ui.scss';
 
 .logs {
     height: 74vh;
     form{
         width: 100%;
-        @apply flex gap-30;
+        @apply flex gap-6;
     }
     .code{
         @apply w-full;
         pre {
             @apply rounded-md overflow-scroll bg-accent h-full;
             &:not(.inside){ @apply border; }
-            background-color: #{$light}05 !important;
         }
     }
 }

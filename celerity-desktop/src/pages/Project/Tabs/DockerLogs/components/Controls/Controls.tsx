@@ -2,8 +2,6 @@ import { LegacyRef } from "react"
 import { DockerServices } from "../../../../../../app/types/docker"
 import { State } from "../../Provider"
 import { Button } from "@/ui/components/ui/button"
-import { Select } from "@/ui/components/ui/select"
-import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select"
 import { Input } from "@/ui/components/ui/input"
 
 export interface IControls {

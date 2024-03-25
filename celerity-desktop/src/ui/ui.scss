@@ -1,5 +1,4 @@
-@import './theme/index.scss';
-@import './layout/index.scss';
+@import './color.scss';
 @import './global.scss';
 
 * {
@@ -18,14 +17,14 @@ body{ overflow: hidden; }
 .code{
     @apply h-full overflow-auto;
     h1, h2, h3, h4, h5{
-        @apply my-15 pb-10 border-b;
+        @apply my-14 pb-10 border-b;
         &:first-child{
             @apply mt-0;
         }
     }
 
     p{ 
-        @apply my-15;
+        @apply my-14;
         code {
             padding: 2px 5px;
             border-radius: 8px;
